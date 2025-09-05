@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Message4you</title>
+  <style>
+    body {
+      background: rgb(38, 35, 35);
+      font-family: Tahoma, sans-serif;
+      color: #222;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 95px;
+      margin-bottom: 5px;
+      color: pink;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      font-size: 40px;
+      margin-top: 0;
+      color: gray;
+    }
+
+    #countdownText {
+      font-size: 38px;
+      font-weight: bold;
+      color: red;
+      margin: 12px 0;
+    }
+
+    #messageBox {
+      width: 100%;
+      height: 150px; 
+      margin: 0 auto;
+      background: pink;
+      border-radius: 12px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;  
+      justify-content: center; 
+      overflow: hidden; 
+    }
+
+    #message {
+      font-size: 40px;
+      font-style: italic;
+      text-align: center;
+      margin: 0;
+      word-wrap: break-word;
+      line-height: 1.4;
+    }
+
+    #status {
+      margin-top: 15px;
+      font-size: 30px;
+      font-weight: bold;
+      color: red;
+    }
+
+    .after-text {
+      color: pink;
+    }
+  </style>
+</head>
+<body>
+  <h1>Message4you</h1>
+  <h2 id="to"></h2>
+
+  <p id="countdownText">
+    This message will self-destruct in <span id="countdown"></span> seconds…
+  </p>
+
+  <div id="messageBox">
+    <p id="message"></p>
+  </div>
+
+  <p id="status"></p>
+
+  <script>
+    const DURATION_SECONDS = 10;
+    const TO_TEXT = "";
+    const SECRET_MESSAGE = "";
+    const SELF_DESTRUCT_TEXT = "⚠️ The message has self-destructed.";
+    const AFTER_TEXT = "— Louis";
+
+    function hashString(str) {
+      let h = 0x811c9dc5;
+      for (const ch of str) {
+        h ^= ch.codePointAt(0);
+        h += (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24);
+        h >>>= 0;
+      }
+      return ("00000000" + h.toString(16)).slice(-8);
+    }
+    const UNIQUE_KEY = "msg_" + hashString(SECRET_MESSAGE);
+
+    const toEl = document.getElementById("to");
+    const countdownEl = document.getElementById("countdown");
+    const countdownTextEl = document.getElementById("countdownText");
+    const messageEl = document.getElementById("message");
+    const statusEl = document.getElementById("status");
+
+    toEl.textContent = TO_TEXT;
+
+    function showDestroyed() {
+      messageEl.textContent = "";
+      statusEl.textContent = SELF_DESTRUCT_TEXT;
+      countdownTextEl.innerHTML = `<span class="after-text">${AFTER_TEXT}</span>`;
+    }
+
+    if (localStorage.getItem(UNIQUE_KEY) === "true") {
+      showDestroyed();
+    } else {
+      messageEl.textContent = SECRET_MESSAGE;
+      let remaining = DURATION_SECONDS;
+      countdownEl.textContent = remaining;
+
+      const timer = setInterval(() => {
+        remaining--;
+        countdownEl.textContent = remaining;
+
+        if (remaining <= 0) {
+          clearInterval(timer);
+          localStorage.setItem(UNIQUE_KEY, "true");
+          showDestroyed();
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
