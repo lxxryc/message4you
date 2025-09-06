@@ -5,69 +5,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Message4you</title>
 <style>
-  * { box-sizing: border-box; margin:0; padding:0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
     height: 100%;
     width: 100%;
     font-family: Tahoma, sans-serif;
     background: #000;
     color: #fff;
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     padding: 2vh 2vw;
   }
 
-  /* NAVIGATION BAR */
   nav {
     width: 100%;
+    max-width: 900px;
     background: #111;
     display: flex;
     justify-content: center;
-    gap: 2vw;
-    padding: 1vh 0;
-    border-radius: 8px;
-    margin-bottom: 2vh;
+    gap: 3vw;
+    padding: 1.5vh 2vw;
+    border-radius: 12px;
+    margin-bottom: 3vh;
+    box-shadow: 0 2px 8px rgba(255,255,255,0.1);
   }
   nav a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    font-size: clamp(14px, 1.8vw, 16px);
+    font-size: clamp(15px, 2vw, 18px);
+    padding: 0.5vh 1vw;
+    border-radius: 6px;
     transition: 0.3s;
     cursor: pointer;
   }
-  nav a:hover { color: #ff0; }
-
-  h1 {
-    font-size: clamp(40px, 6vw, 80px);
-    color: #fff;
-    text-shadow: 0 0 6px #fff;
-    margin-bottom: 1vh;
-    text-align: center;
+  nav a:hover {
+    color: #ff0;
+    background: rgba(255,255,0,0.1);
   }
 
-  #to {
-    font-size: clamp(18px, 2.5vw, 28px);
-    color: #ccc;
-    text-align: center;
-    margin-bottom: 1vh;
-  }
+  h1 { font-size: clamp(40px, 6vw, 80px); color: #fff; text-shadow: 0 0 6px #fff; text-align: center; margin-bottom: 1vh; }
+  #to { font-size: clamp(18px,2.5vw,28px); color:#ccc; text-align:center; margin-bottom:1vh; }
 
   #countdownText {
     font-size: clamp(14px, 2vw, 18px);
     font-weight: bold;
     text-align: center;
-    margin: 1vh 0 2vh 0;
-    color: #ff0000;
+    margin: 1vh 0 2vh;
+    color: #f00;
     animation: countdownFlash 1s infinite;
   }
-
   @keyframes countdownFlash {
-    0%, 50%, 100% { color: #ff0000; }
-    25%, 75% { color: #880000; }
+    0%,50%,100%{color:#f00;}
+    25%,75%{color:#880000;}
   }
 
   #messageBox {
@@ -78,148 +69,103 @@
     padding: 1.5vh 1vw;
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
     overflow-y: auto;
     margin-bottom: 1vh;
-    color: #fff;
     font-weight: bold;
-    background: linear-gradient(0deg, #111, #222, #111, #222);
+    background: linear-gradient(0deg,#111,#222,#111,#222);
     background-size: 400% 400%;
     animation: rotateGradient 15s linear infinite;
+    color: #fff;
   }
   @keyframes rotateGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
   }
+  #message { font-size: clamp(14px,1.6vw,18px); line-height:1.5; word-wrap: break-word; width:100%; }
 
-  #message {
-    font-size: clamp(14px, 1.6vw, 18px);
-    line-height: 1.5;
-    word-wrap: break-word;
-    width: 100%;
-  }
-
-  #status {
-    font-size: clamp(18px, 2vw, 24px);
-    color: #fff;
-    font-weight: bold;
-    text-align: center;
-    margin: 0.5vh 0 2vh 0;
-  }
-
-  .after-text {
-    color: #fff;
-    display: block;
-    margin-top: 1vh;
-    font-size: clamp(16px, 1.8vw, 20px);
-    text-align: center;
-  }
+  #status { font-size: clamp(18px,2vw,24px); font-weight:bold; text-align:center; margin:0.5vh 0 2vh; }
+  .after-text { display:block; margin-top:1vh; font-size: clamp(16px,1.8vw,20px); text-align:center; }
 
   form {
     width: 90vw;
     max-width: 800px;
-    background: #111;
-    padding: 1.5vh 2vw;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 1vh;
+    background:#111;
+    padding:1.5vh 2vw;
+    border-radius:12px;
+    display:flex;
+    flex-direction:column;
+    margin-bottom:1vh;
   }
-
-  form h2 {
-    text-align: center;
-    color: #fff;
-    font-size: clamp(20px, 3vw, 28px);
-    margin-bottom: 1.5vh;
-  }
-
-  label {
-    font-size: clamp(14px, 1.8vw, 16px);
-    color: #ccc;
-    margin: 0.5vh 0;
-  }
-
+  form h2 { text-align:center; color:#fff; font-size:clamp(20px,3vw,28px); margin-bottom:1.5vh; }
+  label { font-size:clamp(14px,1.8vw,16px); color:#ccc; margin:0.5vh 0; }
   input, textarea {
-    width: 100%;
-    padding: 0.8vh 1vw;
-    margin-bottom: 1vh;
-    border-radius: 10px;
-    border: 1px solid #555;
-    font-size: clamp(14px, 1.8vw, 16px);
-    background: #000;
-    color: #fff;
-    resize: none;
+    width:100%;
+    padding:0.8vh 1vw;
+    margin-bottom:1vh;
+    border-radius:10px;
+    border:1px solid #555;
+    background:#000;
+    color:#fff;
+    font-size:clamp(14px,1.8vw,16px);
+    resize:none;
   }
-
   button {
-    padding: 1vh 1vw;
-    font-size: clamp(14px, 1.8vw, 16px);
-    font-weight: bold;
-    background: #fff;
-    color: #000;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 1vh;
+    padding:1vh 1vw;
+    font-size:clamp(14px,1.8vw,16px);
+    font-weight:bold;
+    background:#fff;
+    color:#000;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+    margin-top:1vh;
   }
-  button:hover { background: #ccc; }
+  button:hover { background:#ccc; }
 
-  /* MODAL STYLES */
+  /* MODALS */
   .modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    overflow: auto;
+    display:none;
+    position:fixed;
+    z-index:999;
+    left:0; top:0;
+    width:100%; height:100%;
     background-color: rgba(0,0,0,0.9);
-    padding-top: 5vh;
+    padding-top:5vh;
+    overflow:auto;
   }
   .modal-content {
-    background-color: #111;
-    margin: auto;
-    padding: 2vh 2vw;
-    border: 1px solid #888;
-    width: 90%;
-    max-width: 600px;
-    border-radius: 12px;
-    color: #fff;
-    animation: fadeIn 0.3s ease;
-    max-height: 80vh;
-    overflow-y: auto;
+    background:#111;
+    margin:auto;
+    padding:2vh 2vw;
+    border-radius:12px;
+    width:90%;
+    max-width:600px;
+    max-height:80vh;
+    overflow-y:auto;
+    color:#fff;
+    animation:fadeIn 0.3s ease;
   }
-  @keyframes fadeIn {
-    from {opacity:0;}
-    to {opacity:1;}
-  }
-  .close {
-    color: #ff0;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
+  @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+  .close { color:#ff0; float:right; font-size:28px; font-weight:bold; cursor:pointer; }
 
-  @media (max-width: 480px) {
-    nav a { font-size: 3vw; }
-    h1 { font-size: 12vw; }
-    #to { font-size: 4vw; }
-    #countdownText { font-size: 3.5vw; }
-    #message { font-size: 3vw; }
-    #status { font-size: 4vw; }
-    .after-text { font-size: 4vw; margin-top: 1vw; }
-    form h2 { font-size: 4vw; }
-    input, textarea { font-size: 3vw; }
-    button { font-size: 3.5vw; }
+  @media (max-width:480px){
+    nav a{font-size:3vw;}
+    h1{font-size:12vw;}
+    #to{font-size:4vw;}
+    #countdownText{font-size:3.5vw;}
+    #message{font-size:3vw;}
+    #status{font-size:4vw;}
+    .after-text{font-size:4vw; margin-top:1vw;}
+    form h2{font-size:4vw;}
+    input,textarea{font-size:3vw;}
+    button{font-size:3.5vw;}
   }
 </style>
 </head>
 <body>
 
-<!-- NAVIGATION BAR -->
 <nav>
   <a id="faqBtn">FAQ</a>
   <a id="aboutBtn">About</a>
@@ -229,31 +175,21 @@
 <h1>Message4you</h1>
 <h2 id="to"></h2>
 
-<p id="countdownText">
-  This message will self-destruct in <span id="countdown"></span> seconds…
-</p>
+<p id="countdownText">This message will self-destruct in <span id="countdown"></span> seconds…</p>
 
-<div id="messageBox">
-  <p id="message"></p>
-</div>
-
+<div id="messageBox"><p id="message"></p></div>
 <p id="status"></p>
 
 <form action="https://formspree.io/f/xpwjkayd" method="POST">
   <h2>Send a message</h2>
-
   <label for="name">Your Name (optional):</label>
   <input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
-
   <label for="profile">Your FB/IG/Link (optional):</label>
   <input type="url" id="profile" name="profile" placeholder="https://facebook.com/...">
-
   <label for="recipient">Link of the person you want me to send:</label>
   <input type="url" id="recipient" name="recipient" placeholder="https://...">
-
   <label for="messageInput">Your Message:</label>
   <textarea id="messageInput" name="message" rows="5" required placeholder="Type your message here..."></textarea>
-
   <button type="submit">Send</button>
 </form>
 
@@ -264,22 +200,16 @@
     <h2>FAQ</h2>
     <p><strong>Q:</strong> Am I truly anonymous when sending a message?</p>
     <p><strong>A:</strong> Yes, your identity is fully protected.</p>
-
     <p><strong>Q:</strong> Can anyone see the message I send?</p>
     <p><strong>A:</strong> No, it’s completely private.</p>
-
     <p><strong>Q:</strong> How do I send a message?</p>
     <p><strong>A:</strong> Your message will be placed in a self-destructing box. The countdown depends on the message length.</p>
-
     <p><strong>Q:</strong> Can the recipient identify me?</p>
     <p><strong>A:</strong> No, but you can leave a clue if you want.</p>
-
     <p><strong>Q:</strong> Can the recipient reply?</p>
     <p><strong>A:</strong> Yes, but only through the developer. You will receive their reply via the self-destructing system.</p>
-
     <p><strong>Q:</strong> Is the message permanently deleted?</p>
-    <p><strong>A:</strong> Yes, after it’s opened on each device. We are working to make it 100% privacy-proof.</p>
-
+    <p><strong>A:</strong> Yes, after it’s opened on each device.</p>
     <p><strong>Q:</strong> How long does it take to deliver?</p>
     <p><strong>A:</strong> Usually 1 minute to process and about 30 seconds to send.</p>
   </div>
@@ -289,7 +219,7 @@
   <div class="modal-content">
     <span class="close" data-close="aboutModal">&times;</span>
     <h2>About</h2>
-    <p>Message4you is a work-in-progress web app that allows you to send messages anonymously. Its main purpose is to let you communicate with someone without revealing your identity.</p>
+    <p>Message4you is a web app that allows you to send messages anonymously without revealing your identity.</p>
   </div>
 </div>
 
@@ -297,7 +227,6 @@
   <div class="modal-content">
     <span class="close" data-close="contactModal">&times;</span>
     <h2>Contact</h2>
-    <p>You can reach me here:</p>
     <p>Email: <a href="mailto:lxx.ryc@gmail.com" style="color:#ff0;">lxx.ryc@gmail.com</a></p>
     <p>Facebook: <a href="https://facebook.com" style="color:#ff0;">facebook.com</a></p>
     <p>Instagram: <a href="https://instagram.com" style="color:#ff0;">instagram.com</a></p>
@@ -305,8 +234,7 @@
 </div>
 
 <script>
-  // Message self-destruct logic
-  const DURATION_SECONDS = 5; // Adjust for testing
+  const DURATION_SECONDS = 5;
   const TO_TEXT = "Sam Yvanne";
   const SECRET_MESSAGE = "iloveyou";
   const SELF_DESTRUCT_TEXT = "Message destroyed!";
@@ -342,48 +270,27 @@
     statusEl.appendChild(afterEl);
   }
 
-  if (localStorage.getItem(UNIQUE_KEY) === "true") {
-    showDestroyed();
-  } else {
+  if(localStorage.getItem(UNIQUE_KEY)==="true"){ showDestroyed(); }
+  else{
     messageEl.textContent = SECRET_MESSAGE;
     let remaining = DURATION_SECONDS;
     countdownEl.textContent = remaining;
     const timer = setInterval(() => {
       remaining--;
       countdownEl.textContent = remaining;
-      if (remaining <= 0) {
-        clearInterval(timer);
-        localStorage.setItem(UNIQUE_KEY, "true");
-        showDestroyed();
-      }
-    }, 1000);
+      if(remaining<=0){ clearInterval(timer); localStorage.setItem(UNIQUE_KEY,"true"); showDestroyed(); }
+    },1000);
   }
 
-  // MODAL LOGIC
-  const modals = {
-    faqBtn: 'faqModal',
-    aboutBtn: 'aboutModal',
-    contactBtn: 'contactModal'
-  };
-
-  Object.keys(modals).forEach(btnId => {
-    document.getElementById(btnId).addEventListener('click', () => {
-      document.getElementById(modals[btnId]).style.display = 'block';
-    });
+  // Modal logic
+  const modals = { faqBtn:'faqModal', aboutBtn:'aboutModal', contactBtn:'contactModal' };
+  Object.keys(modals).forEach(id => {
+    document.getElementById(id).addEventListener('click',()=>document.getElementById(modals[id]).style.display='block');
   });
-
-  document.querySelectorAll('.close').forEach(span => {
-    span.addEventListener('click', () => {
-      const modalId = span.getAttribute('data-close');
-      document.getElementById(modalId).style.display = 'none';
-    });
+  document.querySelectorAll('.close').forEach(span=>{
+    span.addEventListener('click',()=>document.getElementById(span.dataset.close).style.display='none');
   });
-
-  window.addEventListener('click', (e) => {
-    if(e.target.classList.contains('modal')) {
-      e.target.style.display = 'none';
-    }
-  });
+  window.addEventListener('click', e=>{ if(e.target.classList.contains('modal')) e.target.style.display='none'; });
 </script>
 
 </body>
