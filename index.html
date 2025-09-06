@@ -12,66 +12,63 @@
       padding: 0;
     }
 
-    body {
-      background: rgb(38, 35, 35);
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden; /* prevent scrolling */
       font-family: Tahoma, sans-serif;
+      background: rgb(38, 35, 35);
       color: #222;
-      text-align: center;
-      padding: 20px;
+    }
+
+    body {
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
+      justify-content: space-between;
+      padding: 2vh 2vw;
     }
 
     h1 {
-      font-size: clamp(50px, 10vw, 120px);
+      font-size: 8vh;
       color: pink;
       text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: clamp(24px, 4vw, 40px);
-      color: pink;
-      margin-bottom: 20px;
+      text-align: center;
     }
 
     #countdownText {
-      font-size: clamp(16px, 2.5vw, 30px);
+      font-size: 3vh;
       font-weight: bold;
       color: red;
-      margin: 10px 0;
+      text-align: center;
     }
 
     #messageBox {
-      width: 90%;
+      width: 90vw;
       max-width: 800px;
-      height: 250px; /* fixed height */
+      height: 35vh; /* fixed fraction of screen */
       background: pink;
       border-radius: 12px;
       box-shadow: 0 8px 18px rgba(0,0,0,0.6);
-      margin: 15px auto;
-      padding: 20px;
-      overflow-y: auto; /* scroll if content overflows */
+      padding: 1.5vh 1vw;
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
+      overflow-y: auto;
     }
 
     #message {
-      font-size: clamp(16px, 2vw, 28px);
-      text-align: left;
-      word-wrap: break-word;
-      line-height: 1.5;
+      font-size: 2.5vh;
+      line-height: 1.4;
       width: 100%;
+      word-wrap: break-word;
     }
 
     #status {
-      font-size: clamp(16px, 2vw, 30px);
+      font-size: 3vh;
       color: red;
       font-weight: bold;
-      margin: 10px 0 30px;
+      text-align: center;
     }
 
     .after-text {
@@ -79,100 +76,69 @@
     }
 
     form {
-      width: 90%;
+      width: 90vw;
       max-width: 800px;
       background: pink;
-      padding: 20px;
+      padding: 2vh 2vw;
       border-radius: 12px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-      text-align: left;
-      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     form h2 {
       text-align: center;
       color: white;
-      margin-bottom: 15px;
+      margin-bottom: 1vh;
+      font-size: 3vh;
     }
 
     label {
-      display: block;
-      font-size: 16px;
-      margin-bottom: 5px;
+      font-size: 2vh;
       color: black;
+      margin: 0.5vh 0 0.5vh 0;
     }
 
     input, textarea {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid black;
+      padding: 1vh 1vw;
+      margin-bottom: 1vh;
       border-radius: 10px;
-      font-size: 16px;
-      resize: none; /* prevent dragging/resizing */
+      border: 1px solid black;
+      font-size: 2vh;
+      resize: none; /* prevent drag/resize */
     }
 
     button {
-      background: white;
-      color: #222;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 18px;
-      cursor: pointer;
+      padding: 1.2vh 1vw;
+      font-size: 2.5vh;
       font-weight: bold;
-      transition: background 0.3s;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
     button:hover {
       background: #ff9eb5;
     }
 
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      #messageBox {
-        height: 200px;
-      }
-
-      input, textarea {
-        font-size: 14px;
-      }
-
-      button {
-        width: 100%;
-      }
-    }
-
+    /* Responsive scaling (just in case) */
     @media (max-width: 480px) {
-      h1 {
-        font-size: clamp(36px, 12vw, 80px);
-      }
-
-      h2 {
-        font-size: clamp(20px, 6vw, 28px);
-      }
-
-      #countdownText {
-        font-size: clamp(14px, 4vw, 20px);
-      }
-
-      #message {
-        font-size: clamp(14px, 4vw, 20px);
-      }
-
-      #messageBox {
-        height: 180px;
-      }
+      h1 { font-size: 10vw; }
+      #countdownText { font-size: 4vw; }
+      #message { font-size: 3.5vw; }
+      form h2 { font-size: 4vw; }
+      input, textarea { font-size: 3vw; }
+      button { font-size: 4vw; }
     }
   </style>
 </head>
 <body>
   <h1>Message4you</h1>
-  <h2 id="to"></h2>
-
-  <p id="countdownText">
-    This message will self-destruct in <span id="countdown"></span> seconds…
-  </p>
+  <p id="countdownText">This message will self-destruct in <span id="countdown"></span> seconds…</p>
 
   <div id="messageBox">
     <p id="message"></p>
@@ -182,7 +148,6 @@
 
   <form action="https://formspree.io/f/xpwjkayd" method="POST">
     <h2>Send me a message</h2>
-
     <label for="name">Your Name (optional):</label>
     <input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
 
@@ -200,7 +165,6 @@
 
   <script>
     const DURATION_SECONDS = 10;
-    const TO_TEXT = "";
     const SECRET_MESSAGE = "This is a sample secret message. It will self-destruct once the timer reaches zero.";
     const SELF_DESTRUCT_TEXT = "⚠️ Message destroyed!";
     const AFTER_TEXT = "— Anonymous";
@@ -216,18 +180,13 @@
     }
 
     const UNIQUE_KEY = "msg_" + hashString(SECRET_MESSAGE);
-    const toEl = document.getElementById("to");
     const countdownEl = document.getElementById("countdown");
-    const countdownTextEl = document.getElementById("countdownText");
     const messageEl = document.getElementById("message");
     const statusEl = document.getElementById("status");
-
-    toEl.textContent = TO_TEXT;
 
     function showDestroyed() {
       messageEl.textContent = "";
       statusEl.textContent = SELF_DESTRUCT_TEXT;
-      countdownTextEl.innerHTML = `<span class="after-text">${AFTER_TEXT}</span>`;
     }
 
     if (localStorage.getItem(UNIQUE_KEY) === "true") {
@@ -236,7 +195,6 @@
       messageEl.textContent = SECRET_MESSAGE;
       let remaining = DURATION_SECONDS;
       countdownEl.textContent = remaining;
-
       const timer = setInterval(() => {
         remaining--;
         countdownEl.textContent = remaining;
