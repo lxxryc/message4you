@@ -11,8 +11,8 @@
     height: 100%;
     width: 100%;
     font-family: Tahoma, sans-serif;
-    background: #111;
-    color: #eee;
+    background: #000;
+    color: #fff;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -24,7 +24,7 @@
   h1 {
     font-size: clamp(40px, 6vw, 80px);
     color: #fff;
-    text-shadow: 1px 1px 6px rgba(255,255,255,0.2);
+    text-shadow: 0 0 6px #fff;
     margin-bottom: 1vh;
     text-align: center;
   }
@@ -37,48 +37,48 @@
   }
 
   #countdownText {
-    font-size: clamp(12px, 1.8vw, 16px);
-    color: #ff4444;
+    font-size: clamp(14px, 2vw, 18px);
     font-weight: bold;
     text-align: center;
     margin: 1vh 0 2vh 0;
-    text-shadow: 0 0 4px #ff4444;
-    animation: pulse 1s infinite;
+    color: #ff0000;
+    animation: countdownFlash 1s infinite;
   }
 
-  /* Glow animation for countdown */
-  @keyframes pulse {
-    0% { text-shadow: 0 0 2px #ff4444, 0 0 6px #ff4444; }
-    50% { text-shadow: 0 0 10px #ff6666, 0 0 20px #ff4444; }
-    100% { text-shadow: 0 0 2px #ff4444, 0 0 6px #ff4444; }
+  @keyframes countdownFlash {
+    0%, 50%, 100% { color: #ff0000; }
+    25%, 75% { color: #880000; }
   }
 
   #messageBox {
     width: 90vw;
     max-width: 800px;
     height: 25vh;
-    background: #222;
     border-radius: 12px;
-    box-shadow: 0 0 12px rgba(255,255,255,0.1);
     padding: 1.5vh 1vw;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     overflow-y: auto;
     margin-bottom: 1vh;
-    transition: box-shadow 0.5s;
+    color: #fff;
+    font-weight: bold;
+    background: linear-gradient(0deg, #111, #222, #111, #222);
+    background-size: 400% 400%;
+    animation: rotateGradient 15s linear infinite;
   }
 
-  /* Glow effect when timer is < 5 seconds */
-  #messageBox.glow {
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+  @keyframes rotateGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   #message {
     font-size: clamp(14px, 1.6vw, 18px);
     line-height: 1.5;
     word-wrap: break-word;
-    color: #fff;
+    width: 100%;
   }
 
   #status {
@@ -90,19 +90,19 @@
   }
 
   .after-text {
-    color: #ccc;
+    color: #fff;
     display: block;
     margin-top: 1vh;
     font-size: clamp(16px, 1.8vw, 20px);
+    text-align: center;
   }
 
   form {
     width: 90vw;
     max-width: 800px;
-    background: #222;
+    background: #111;
     padding: 1.5vh 2vw;
     border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.7);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -129,8 +129,8 @@
     border-radius: 10px;
     border: 1px solid #555;
     font-size: clamp(14px, 1.8vw, 16px);
-    background: #111;
-    color: #eee;
+    background: #000;
+    color: #fff;
     resize: none;
   }
 
@@ -139,7 +139,7 @@
     font-size: clamp(14px, 1.8vw, 16px);
     font-weight: bold;
     background: #fff;
-    color: #111;
+    color: #000;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -209,7 +209,6 @@
   const countdownTextEl = document.getElementById("countdownText");
   const messageEl = document.getElementById("message");
   const statusEl = document.getElementById("status");
-  const messageBoxEl = document.getElementById("messageBox");
 
   toEl.textContent = TO_TEXT;
 
@@ -227,9 +226,12 @@
 
   function showDestroyed() {
     messageEl.textContent = "";
+    countdownTextEl.innerHTML = "";
     statusEl.textContent = SELF_DESTRUCT_TEXT;
-    countdownTextEl.innerHTML = `<span class="after-text">${AFTER_TEXT}</span>`;
-    messageBoxEl.classList.remove('glow');
+    const afterEl = document.createElement('span');
+    afterEl.className = 'after-text';
+    afterEl.textContent = AFTER_TEXT;
+    statusEl.appendChild(afterEl);
   }
 
   if (localStorage.getItem(UNIQUE_KEY) === "true") {
@@ -242,13 +244,6 @@
     const timer = setInterval(() => {
       remaining--;
       countdownEl.textContent = remaining;
-
-      // Add glow effect in message box when remaining <= 5
-      if (remaining <= 5) {
-        messageBoxEl.classList.add('glow');
-        countdownTextEl.style.animationDuration = `${0.5 + remaining * 0.1}s`; // faster pulse as timer decreases
-      }
-
       if (remaining <= 0) {
         clearInterval(timer);
         localStorage.setItem(UNIQUE_KEY, "true");
