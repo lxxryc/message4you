@@ -1,0 +1,26 @@
+name: Auto Cleanup Commits
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Reset to single commit
+        run: |
+          git config --global user.name "auto-cleanup-bot"
+          git config --global user.email "bot@example.com"
+          git checkout --orphan temp_branch
+          git add -A
+          git commit -m "Clean commit"
+          git branch -D main
+          git branch -m main
+          git push -f origin main
