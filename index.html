@@ -6,18 +6,14 @@
   <title>Message4you</title>
   <style>
     /* Reset */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin:0; padding:0; }
 
     html, body {
       height: 100%;
       width: 100%;
       overflow: hidden; /* prevent scrolling */
       font-family: Tahoma, sans-serif;
-      background: rgb(38, 35, 35);
+      background: rgb(38,35,35);
       color: #222;
     }
 
@@ -26,27 +22,31 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 2vh 2vw;
+      padding: 1vh 2vw;
     }
 
+    /* Title */
     h1 {
-      font-size: 8vh;
+      font-size: clamp(32px, 6vw, 70px);
       color: pink;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
       text-align: center;
     }
 
+    /* Countdown */
     #countdownText {
-      font-size: 3vh;
+      font-size: clamp(16px, 2.5vw, 22px);
       font-weight: bold;
       color: red;
       text-align: center;
+      margin: 1vh 0;
     }
 
+    /* Message Box */
     #messageBox {
       width: 90vw;
       max-width: 800px;
-      height: 35vh; /* fixed fraction of screen */
+      height: 30vh;
       background: pink;
       border-radius: 12px;
       box-shadow: 0 8px 18px rgba(0,0,0,0.6);
@@ -54,27 +54,27 @@
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
-      overflow-y: auto;
+      overflow-y: auto; /* scroll if message too long */
     }
 
     #message {
-      font-size: 2.5vh;
+      font-size: clamp(14px, 1.8vw, 20px);
       line-height: 1.4;
       width: 100%;
       word-wrap: break-word;
     }
 
     #status {
-      font-size: 3vh;
+      font-size: clamp(16px, 2vw, 22px);
       color: red;
       font-weight: bold;
       text-align: center;
+      margin-top: 1vh;
     }
 
-    .after-text {
-      color: pink;
-    }
+    .after-text { color: pink; }
 
+    /* Form */
     form {
       width: 90vw;
       max-width: 800px;
@@ -91,41 +91,40 @@
       text-align: center;
       color: white;
       margin-bottom: 1vh;
-      font-size: 3vh;
+      font-size: clamp(18px, 3vw, 28px);
     }
 
     label {
-      font-size: 2vh;
+      font-size: clamp(14px, 2vw, 18px);
       color: black;
       margin: 0.5vh 0 0.5vh 0;
     }
 
     input, textarea {
       width: 100%;
-      padding: 1vh 1vw;
+      padding: 0.8vh 0.8vw;
       margin-bottom: 1vh;
       border-radius: 10px;
       border: 1px solid black;
-      font-size: 2vh;
-      resize: none; /* prevent drag/resize */
+      font-size: clamp(14px, 2vw, 18px);
+      resize: none;
     }
 
     button {
-      padding: 1.2vh 1vw;
-      font-size: 2.5vh;
+      padding: 1vh 1vw;
+      font-size: clamp(16px, 2vw, 20px);
       font-weight: bold;
       background: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       transition: 0.3s;
+      margin-top: 0.5vh;
     }
 
-    button:hover {
-      background: #ff9eb5;
-    }
+    button:hover { background: #ff9eb5; }
 
-    /* Responsive scaling (just in case) */
+    /* Perfect visual balance for all screens */
     @media (max-width: 480px) {
       h1 { font-size: 10vw; }
       #countdownText { font-size: 4vw; }
@@ -148,6 +147,7 @@
 
   <form action="https://formspree.io/f/xpwjkayd" method="POST">
     <h2>Send me a message</h2>
+
     <label for="name">Your Name (optional):</label>
     <input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
 
