@@ -40,11 +40,11 @@
 
   /* Countdown */
   #countdownText {
-    font-size: clamp(16px, 2.5vw, 22px);
+    font-size: clamp(12px, 1.8vw, 16px); /* smaller font */
     color: red;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 2vh;
+    margin: 1vh 0 2vh 0; /* moved slightly down */
   }
 
   /* Message Box */
@@ -60,7 +60,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     overflow-y: auto;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh; /* closer spacing for destroyed message */
   }
 
   #message {
@@ -74,11 +74,14 @@
     color: red;
     font-weight: bold;
     text-align: center;
-    margin: 2vh 0; /* space above and below */
+    margin: 0.5vh 0 2vh 0; /* less space above, keeps below message box */
   }
 
   .after-text {
     color: pink;
+    display: block;
+    margin-top: 1vh; /* slight spacing below status */
+    font-size: clamp(16px, 1.8vw, 20px); /* stays noticeable */
   }
 
   /* Form */
@@ -137,9 +140,10 @@
   @media (max-width: 480px) {
     h1 { font-size: 12vw; }
     #to { font-size: 4vw; }
-    #countdownText { font-size: 4vw; }
+    #countdownText { font-size: 3.5vw; }
     #message { font-size: 3vw; }
     #status { font-size: 4vw; }
+    .after-text { font-size: 4vw; margin-top: 1vw; }
     form h2 { font-size: 4vw; }
     input, textarea { font-size: 3vw; }
     button { font-size: 3.5vw; }
@@ -182,9 +186,9 @@
 <script>
   const DURATION_SECONDS = 10;
   const TO_TEXT = "Louís";
-  const SECRET_MESSAGE = "if you're reading this, you know how to read man to, kata kata ha";
+  const SECRET_MESSAGE = "Hi, if you're reading this, panihapon na";
   const SELF_DESTRUCT_TEXT = "Message destroyed!☹️";
-  const AFTER_TEXT = "— Adsila";
+  const AFTER_TEXT = "— Anonymous";
 
   const toEl = document.getElementById("to");
   const countdownEl = document.getElementById("countdown");
