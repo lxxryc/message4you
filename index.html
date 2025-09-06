@@ -17,8 +17,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 2vh 2vw;
+  }
+
+  /* NAVIGATION BAR */
+  nav {
+    width: 100%;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+    padding: 1vh 0;
+    border-radius: 8px;
+    margin-bottom: 2vh;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: clamp(14px, 1.8vw, 16px);
+    transition: 0.3s;
+  }
+
+  nav a:hover {
+    color: #ff0;
   }
 
   h1 {
@@ -152,6 +176,7 @@
   }
 
   @media (max-width: 480px) {
+    nav a { font-size: 3vw; }
     h1 { font-size: 12vw; }
     #to { font-size: 4vw; }
     #countdownText { font-size: 3.5vw; }
@@ -165,6 +190,13 @@
 </style>
 </head>
 <body>
+
+<!-- NAVIGATION BAR -->
+<nav>
+  <a href="#faq">FAQ</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</nav>
 
 <h1>Message4you</h1>
 <h2 id="to"></h2>
@@ -198,9 +230,9 @@
 </form>
 
 <script>
-  const DURATION_SECONDS = 25;
+  const DURATION_SECONDS = 0.5;
   const TO_TEXT = "Sam Yvanne";
-  const SECRET_MESSAGE = "gfffvvccxvvvcx";
+  const SECRET_MESSAGE = "iloveyou";
   const SELF_DESTRUCT_TEXT = "Message destroyed!";
   const AFTER_TEXT = "— Louís Ryc";
 
