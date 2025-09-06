@@ -2,97 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Message4you</title>
   <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       background: rgb(38, 35, 35);
       font-family: Tahoma, sans-serif;
       color: #222;
       text-align: center;
-      padding: 30px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
 
     h1 {
-      font-size: 120px;
-      margin-bottom: 5px;
+      font-size: clamp(50px, 10vw, 120px);
       color: pink;
       text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+      margin-bottom: 10px;
     }
 
     h2 {
-      font-size: 40px;
-      margin-top: 0;
+      font-size: clamp(24px, 4vw, 40px);
       color: pink;
+      margin-bottom: 20px;
     }
 
     #countdownText {
-      font-size: 30px;
+      font-size: clamp(16px, 2.5vw, 30px);
       font-weight: bold;
       color: red;
-      margin: 12px 0;
+      margin: 10px 0;
     }
 
     #messageBox {
-      margin: 20px auto;
-      padding: 20px;
+      width: 90%;
+      max-width: 800px;
+      height: 250px; /* fixed height */
       background: pink;
       border-radius: 12px;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+      margin: 15px auto;
+      padding: 20px;
+      overflow-y: auto; /* scroll if content overflows */
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
-      overflow-y: auto;
-      width: 80%;
-      min-height: 200px;
-      max-height: 400px;
     }
 
     #message {
-      font-size: 28px;
+      font-size: clamp(16px, 2vw, 28px);
       text-align: left;
-      margin: 0;
       word-wrap: break-word;
       line-height: 1.5;
+      width: 100%;
     }
 
     #status {
-      margin-top: 15px;
-      font-size: 30px;
-      font-weight: bold;
+      font-size: clamp(16px, 2vw, 30px);
       color: red;
+      font-weight: bold;
+      margin: 10px 0 30px;
     }
 
     .after-text {
       color: pink;
     }
 
-   
     form {
-      margin-top: 40px;
+      width: 90%;
+      max-width: 800px;
       background: pink;
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
       text-align: left;
+      margin-bottom: 30px;
+    }
+
+    form h2 {
+      text-align: center;
+      color: white;
+      margin-bottom: 15px;
     }
 
     label {
       display: block;
-      font-size: 18px;
+      font-size: 16px;
       margin-bottom: 5px;
       color: black;
     }
 
     input, textarea {
-      width: 98%;
+      width: 100%;
       padding: 10px;
       margin-bottom: 15px;
       border: 1px solid black;
       border-radius: 10px;
       font-size: 16px;
+      resize: none; /* prevent dragging/resizing */
     }
 
     button {
@@ -104,10 +121,48 @@
       font-size: 18px;
       cursor: pointer;
       font-weight: bold;
+      transition: background 0.3s;
     }
 
     button:hover {
       background: #ff9eb5;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      #messageBox {
+        height: 200px;
+      }
+
+      input, textarea {
+        font-size: 14px;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: clamp(36px, 12vw, 80px);
+      }
+
+      h2 {
+        font-size: clamp(20px, 6vw, 28px);
+      }
+
+      #countdownText {
+        font-size: clamp(14px, 4vw, 20px);
+      }
+
+      #message {
+        font-size: clamp(14px, 4vw, 20px);
+      }
+
+      #messageBox {
+        height: 180px;
+      }
     }
   </style>
 </head>
@@ -125,9 +180,9 @@
 
   <p id="status"></p>
 
-  
   <form action="https://formspree.io/f/xpwjkayd" method="POST">
-    <h2 style="text-align:center; color:white;">Send me a message</h2>
+    <h2>Send me a message</h2>
+
     <label for="name">Your Name (optional):</label>
     <input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
 
@@ -145,10 +200,10 @@
 
   <script>
     const DURATION_SECONDS = 10;
-    const TO_TEXT = "Louís";
-    const SECRET_MESSAGE = "if you're reading this, you know how to read man to, kata kata ha";
-    const SELF_DESTRUCT_TEXT = "Message destroyed!☹️";
-    const AFTER_TEXT = "— Adsila";
+    const TO_TEXT = "";
+    const SECRET_MESSAGE = "This is a sample secret message. It will self-destruct once the timer reaches zero.";
+    const SELF_DESTRUCT_TEXT = "⚠️ Message destroyed!";
+    const AFTER_TEXT = "— Anonymous";
 
     function hashString(str) {
       let h = 0x811c9dc5;
@@ -159,8 +214,8 @@
       }
       return ("00000000" + h.toString(16)).slice(-8);
     }
-    const UNIQUE_KEY = "msg_" + hashString(SECRET_MESSAGE);
 
+    const UNIQUE_KEY = "msg_" + hashString(SECRET_MESSAGE);
     const toEl = document.getElementById("to");
     const countdownEl = document.getElementById("countdown");
     const countdownTextEl = document.getElementById("countdownText");
@@ -185,7 +240,6 @@
       const timer = setInterval(() => {
         remaining--;
         countdownEl.textContent = remaining;
-
         if (remaining <= 0) {
           clearInterval(timer);
           localStorage.setItem(UNIQUE_KEY, "true");
