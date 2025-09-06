@@ -21,16 +21,14 @@
     padding: 2vh 2vw;
   }
 
-  /* Title */
   h1 {
     font-size: clamp(40px, 6vw, 80px);
     color: #fff;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 6px rgba(255,255,255,0.2);
     margin-bottom: 1vh;
     text-align: center;
   }
 
-  /* TO text */
   #to {
     font-size: clamp(18px, 2.5vw, 28px);
     color: #ccc;
@@ -38,29 +36,42 @@
     margin-bottom: 1vh;
   }
 
-  /* Countdown */
   #countdownText {
     font-size: clamp(12px, 1.8vw, 16px);
-    color: #aaa;
+    color: #ff4444;
     font-weight: bold;
     text-align: center;
     margin: 1vh 0 2vh 0;
+    text-shadow: 0 0 4px #ff4444;
+    animation: pulse 1s infinite;
   }
 
-  /* Message Box */
+  /* Glow animation for countdown */
+  @keyframes pulse {
+    0% { text-shadow: 0 0 2px #ff4444, 0 0 6px #ff4444; }
+    50% { text-shadow: 0 0 10px #ff6666, 0 0 20px #ff4444; }
+    100% { text-shadow: 0 0 2px #ff4444, 0 0 6px #ff4444; }
+  }
+
   #messageBox {
     width: 90vw;
     max-width: 800px;
     height: 25vh;
     background: #222;
     border-radius: 12px;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.8);
+    box-shadow: 0 0 12px rgba(255,255,255,0.1);
     padding: 1.5vh 1vw;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     overflow-y: auto;
     margin-bottom: 1vh;
+    transition: box-shadow 0.5s;
+  }
+
+  /* Glow effect when timer is < 5 seconds */
+  #messageBox.glow {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
   }
 
   #message {
@@ -85,7 +96,6 @@
     font-size: clamp(16px, 1.8vw, 20px);
   }
 
-  /* Form */
   form {
     width: 90vw;
     max-width: 800px;
@@ -199,6 +209,7 @@
   const countdownTextEl = document.getElementById("countdownText");
   const messageEl = document.getElementById("message");
   const statusEl = document.getElementById("status");
+  const messageBoxEl = document.getElementById("messageBox");
 
   toEl.textContent = TO_TEXT;
 
@@ -218,6 +229,7 @@
     messageEl.textContent = "";
     statusEl.textContent = SELF_DESTRUCT_TEXT;
     countdownTextEl.innerHTML = `<span class="after-text">${AFTER_TEXT}</span>`;
+    messageBoxEl.classList.remove('glow');
   }
 
   if (localStorage.getItem(UNIQUE_KEY) === "true") {
@@ -226,9 +238,17 @@
     messageEl.textContent = SECRET_MESSAGE;
     let remaining = DURATION_SECONDS;
     countdownEl.textContent = remaining;
+
     const timer = setInterval(() => {
       remaining--;
       countdownEl.textContent = remaining;
+
+      // Add glow effect in message box when remaining <= 5
+      if (remaining <= 5) {
+        messageBoxEl.classList.add('glow');
+        countdownTextEl.style.animationDuration = `${0.5 + remaining * 0.1}s`; // faster pulse as timer decreases
+      }
+
       if (remaining <= 0) {
         clearInterval(timer);
         localStorage.setItem(UNIQUE_KEY, "true");
