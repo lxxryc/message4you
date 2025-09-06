@@ -1,208 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Message4you</title>
-  <style>
-    * { box-sizing: border-box; margin:0; padding:0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Message4you</title>
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; }
 
-    html, body {
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-      font-family: Tahoma, sans-serif;
-      background: rgb(38,35,35);
-      color: #222;
-    }
+  html, body {
+    height: 100%;
+    width: 100%;
+    font-family: Tahoma, sans-serif;
+    background: rgb(38,35,35);
+    color: #222;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vh 2vw;
+  }
 
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      padding: 1.5vh 2vw;
-    }
+  /* Title */
+  h1 {
+    font-size: clamp(40px, 6vw, 80px);
+    color: pink;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
+    margin-bottom: 1vh;
+    text-align: center;
+  }
 
-    /* Title */
-    h1 {
-      font-size: clamp(32px, 5vw, 60px);
-      color: pink;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
-      text-align: center;
-    }
+  /* TO text */
+  #to {
+    font-size: clamp(18px, 2.5vw, 28px);
+    color: pink;
+    text-align: center;
+    margin-bottom: 1vh;
+  }
 
-    /* Countdown */
-    #countdownText {
-      font-size: clamp(14px, 2vw, 18px);
-      font-weight: bold;
-      color: red;
-      text-align: center;
-      margin: 0.5vh 0;
-    }
+  /* Countdown */
+  #countdownText {
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2vh;
+  }
 
-    /* Message Box */
-    #messageBox {
-      width: 90vw;
-      max-width: 800px;
-      height: 28vh;
-      background: pink;
-      border-radius: 12px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.6);
-      padding: 1.5vh 1vw;
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-start;
-      overflow-y: auto;
-    }
+  /* Message Box */
+  #messageBox {
+    width: 90vw;
+    max-width: 800px;
+    height: 25vh;
+    background: pink;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+    padding: 1.5vh 1vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-y: auto;
+    margin-bottom: 2vh;
+  }
 
-    #message {
-      font-size: clamp(14px, 1.6vw, 18px);
-      line-height: 1.4;
-      width: 100%;
-      word-wrap: break-word;
-    }
+  #message {
+    font-size: clamp(14px, 1.6vw, 18px);
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
 
-    #status {
-      font-size: clamp(16px, 1.8vw, 20px);
-      color: red;
-      font-weight: bold;
-      text-align: center;
-      margin: 2vh 0; /* more space above and below */
-    }
+  #status {
+    font-size: clamp(18px, 2vw, 24px);
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin: 2vh 0; /* space above and below */
+  }
 
-    .after-text { color: pink; }
+  .after-text {
+    color: pink;
+  }
 
-    /* Form */
-    form {
-      width: 90vw;
-      max-width: 800px;
-      background: pink;
-      padding: 1.5vh 1.5vw;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+  /* Form */
+  form {
+    width: 90vw;
+    max-width: 800px;
+    background: pink;
+    padding: 1.5vh 2vw;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+  }
 
-    form h2 {
-      text-align: center;
-      color: white;
-      margin-bottom: 1vh;
-      font-size: clamp(16px, 2.5vw, 24px);
-    }
+  form h2 {
+    text-align: center;
+    color: white;
+    font-size: clamp(20px, 3vw, 28px);
+    margin-bottom: 1.5vh;
+  }
 
-    label {
-      font-size: clamp(13px, 1.8vw, 16px);
-      color: black;
-      margin: 0.5vh 0 0.5vh 0;
-    }
+  label {
+    font-size: clamp(14px, 1.8vw, 16px);
+    color: black;
+    margin: 0.5vh 0;
+  }
 
-    input, textarea {
-      width: 100%;
-      padding: 0.8vh 0.8vw;
-      margin-bottom: 1vh;
-      border-radius: 10px;
-      border: 1px solid black;
-      font-size: clamp(14px, 1.8vw, 16px);
-      resize: none;
-    }
+  input, textarea {
+    width: 100%;
+    padding: 0.8vh 1vw;
+    margin-bottom: 1vh;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: clamp(14px, 1.8vw, 16px);
+    resize: none;
+  }
 
-    button {
-      padding: 1vh 1vw;
-      font-size: clamp(14px, 1.8vw, 16px);
-      font-weight: bold;
-      background: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: 0.5vh;
-    }
+  button {
+    padding: 1vh 1vw;
+    font-size: clamp(14px, 1.8vw, 16px);
+    font-weight: bold;
+    background: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 1vh;
+  }
 
-    button:hover { background: #ff9eb5; }
+  button:hover {
+    background: #ff9eb5;
+  }
 
-    @media (max-width: 480px) {
-      h1 { font-size: 10vw; }
-      #countdownText { font-size: 3.5vw; }
-      #message { font-size: 3vw; }
-      form h2 { font-size: 3.5vw; }
-      input, textarea { font-size: 3vw; }
-      button { font-size: 3.5vw; }
-    }
-  </style>
+  @media (max-width: 480px) {
+    h1 { font-size: 12vw; }
+    #to { font-size: 4vw; }
+    #countdownText { font-size: 4vw; }
+    #message { font-size: 3vw; }
+    #status { font-size: 4vw; }
+    form h2 { font-size: 4vw; }
+    input, textarea { font-size: 3vw; }
+    button { font-size: 3.5vw; }
+  }
+</style>
 </head>
 <body>
-  <h1>Message4you</h1>
-  <p id="countdownText">This message will self-destruct in <span id="countdown"></span> seconds…</p>
 
-  <div id="messageBox">
-    <p id="message"></p>
-  </div>
+<h1>Message4you</h1>
+<h2 id="to"></h2>
 
-  <p id="status"></p>
+<p id="countdownText">
+  This message will self-destruct in <span id="countdown"></span> seconds…
+</p>
 
-  <form action="https://formspree.io/f/xpwjkayd" method="POST">
-    <h2>Send me a message</h2>
+<div id="messageBox">
+  <p id="message"></p>
+</div>
 
-    <label for="name">Your Name (optional):</label>
-    <input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
+<p id="status"></p>
 
-    <label for="profile">Your FB/IG/Link (optional):</label>
-    <input type="url" id="profile" name="profile" placeholder="https://facebook.com/...">
+<form action="https://formspree.io/f/xpwjkayd" method="POST">
+  <h2>Send me a message</h2>
 
-    <label for="recipient">Link of the person you want me to send (optional):</label>
-    <input type="url" id="recipient" name="recipient" placeholder="https://...">
+  <label for="name">Your Name (optional):</label>
+  <input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
 
-    <label for="messageInput">Your Message:</label>
-    <textarea id="messageInput" name="message" rows="5" required placeholder="Type your message here..."></textarea>
+  <label for="profile">Your FB/IG/Link (optional):</label>
+  <input type="url" id="profile" name="profile" placeholder="https://facebook.com/...">
 
-    <button type="submit">Send</button>
-  </form>
+  <label for="recipient">Link of the person you want me to send (optional):</label>
+  <input type="url" id="recipient" name="recipient" placeholder="https://...">
 
-  <script>
-    const DURATION_SECONDS = 10;
-    const SECRET_MESSAGE = "jdjsjsksjsjddjhddhhdhdhdhdhdhd if you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata ha";
-    const SELF_DESTRUCT_TEXT = "⚠️ Message destroyed!";
-    const AFTER_TEXT = "— Anonymous";
+  <label for="messageInput">Your Message:</label>
+  <textarea id="messageInput" name="message" rows="5" required placeholder="Type your message here..."></textarea>
 
-    function hashString(str) {
-      let h = 0x811c9dc5;
-      for (const ch of str) {
-        h ^= ch.codePointAt(0);
-        h += (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24);
-        h >>>= 0;
-      }
-      return ("00000000" + h.toString(16)).slice(-8);
+  <button type="submit">Send</button>
+</form>
+
+<script>
+  const DURATION_SECONDS = 10;
+  const TO_TEXT = "Louís";
+  const SECRET_MESSAGE = "if you're reading this, you know how to read man to, kata kata ha";
+  const SELF_DESTRUCT_TEXT = "Message destroyed!☹️";
+  const AFTER_TEXT = "— Adsila";
+
+  const toEl = document.getElementById("to");
+  const countdownEl = document.getElementById("countdown");
+  const countdownTextEl = document.getElementById("countdownText");
+  const messageEl = document.getElementById("message");
+  const statusEl = document.getElementById("status");
+
+  toEl.textContent = TO_TEXT;
+
+  function hashString(str) {
+    let h = 0x811c9dc5;
+    for (const ch of str) {
+      h ^= ch.codePointAt(0);
+      h += (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24);
+      h >>>= 0;
     }
+    return ("00000000" + h.toString(16)).slice(-8);
+  }
 
-    const UNIQUE_KEY = "msg_" + hashString(SECRET_MESSAGE);
-    const countdownEl = document.getElementById("countdown");
-    const messageEl = document.getElementById("message");
-    const statusEl = document.getElementById("status");
+  const UNIQUE_KEY = "msg_" + hashString(SECRET_MESSAGE);
 
-    function showDestroyed() {
-      messageEl.textContent = "";
-      statusEl.textContent = SELF_DESTRUCT_TEXT;
-    }
+  function showDestroyed() {
+    messageEl.textContent = "";
+    statusEl.textContent = SELF_DESTRUCT_TEXT;
+    countdownTextEl.innerHTML = `<span class="after-text">${AFTER_TEXT}</span>`;
+  }
 
-    if (localStorage.getItem(UNIQUE_KEY) === "true") {
-      showDestroyed();
-    } else {
-      messageEl.textContent = SECRET_MESSAGE;
-      let remaining = DURATION_SECONDS;
+  if (localStorage.getItem(UNIQUE_KEY) === "true") {
+    showDestroyed();
+  } else {
+    messageEl.textContent = SECRET_MESSAGE;
+    let remaining = DURATION_SECONDS;
+    countdownEl.textContent = remaining;
+    const timer = setInterval(() => {
+      remaining--;
       countdownEl.textContent = remaining;
-      const timer = setInterval(() => {
-        remaining--;
-        countdownEl.textContent = remaining;
-        if (remaining <= 0) {
-          clearInterval(timer);
-          localStorage.setItem(UNIQUE_KEY, "true");
-          showDestroyed();
-        }
-      }, 1000);
-    }
-  </script>
+      if (remaining <= 0) {
+        clearInterval(timer);
+        localStorage.setItem(UNIQUE_KEY, "true");
+        showDestroyed();
+      }
+    }, 1000);
+  }
+</script>
+
 </body>
 </html>
