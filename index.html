@@ -5,49 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Message4you</title>
 <style>
-  :root {
-    --font-large: clamp(40px, 6vw, 80px);
-    --font-medium: clamp(18px, 2.5vw, 28px);
-    --font-small: clamp(14px, 1.6vw, 18px);
-    --font-xsmall: clamp(12px, 1.4vw, 16px);
-    --padding: 1.5vh 1vw;
-    --border-radius: 12px;
-    --primary-color: #fff;
-    --secondary-color: #ccc;
-    --bg-dark: #000;
-    --gradient-dark1: #111;
-    --gradient-dark2: #222;
-  }
+  * { box-sizing: border-box; margin:0; padding:0; }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
-    height: 100%; width: 100%;
+    height: 100%;
+    width: 100%;
     font-family: Tahoma, sans-serif;
-    background: var(--bg-dark);
-    color: var(--primary-color);
+    background: #000;
+    color: #fff;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 2vh 2vw;
-    overflow: hidden;
   }
 
-  h1 { font-size: var(--font-large); color: var(--primary-color); text-shadow: 0 0 8px var(--primary-color); margin-bottom: 1vh; text-align: center; }
-  #to { font-size: var(--font-medium); color: var(--secondary-color); text-align: center; margin-bottom: 1vh; }
-  #countdownText { font-size: var(--font-small); font-weight: bold; text-align: center; margin: 1vh 0 2vh 0; animation: countdownFlash 1s infinite; }
+  h1 {
+    font-size: clamp(40px, 6vw, 80px);
+    color: #fff;
+    text-shadow: 0 0 6px #fff;
+    margin-bottom: 1vh;
+    text-align: center;
+  }
+
+  #to {
+    font-size: clamp(18px, 2.5vw, 28px);
+    color: #ccc;
+    text-align: center;
+    margin-bottom: 1vh;
+  }
+
+  #countdownText {
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: bold;
+    text-align: center;
+    margin: 1vh 0 2vh 0;
+    color: #ff0000;
+    animation: countdownFlash 1s infinite;
+  }
 
   @keyframes countdownFlash {
-    0%, 50%, 100% { color: #ff0000; text-shadow: 0 0 6px #ff0000; }
-    25%, 75% { color: #880000; text-shadow: none; }
+    0%, 50%, 100% { color: #ff0000; }
+    25%, 75% { color: #880000; }
   }
 
   #messageBox {
     width: 90vw;
     max-width: 800px;
     height: 25vh;
-    border-radius: var(--border-radius);
-    padding: var(--padding);
+    border-radius: 12px;
+    padding: 1.5vh 1vw;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -55,66 +63,82 @@
     margin-bottom: 1vh;
     color: #fff;
     font-weight: bold;
-    background: linear-gradient(45deg, var(--gradient-dark1), var(--gradient-dark2), var(--gradient-dark1), var(--gradient-dark2));
+    background: linear-gradient(0deg, #111, #222, #111, #222);
     background-size: 400% 400%;
+    animation: rotateGradient 15s linear infinite;
   }
 
-  #message { font-size: var(--font-small); line-height: 1.5; word-wrap: break-word; width: 100%; }
-  #status { font-size: var(--font-medium); color: var(--primary-color); font-weight: bold; text-align: center; margin: 0.5vh 0 2vh 0; }
-  .after-text { color: var(--primary-color); display: block; margin-top: 1vh; font-size: clamp(16px, 1.8vw, 20px); text-align: center; }
+  @keyframes rotateGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  #message {
+    font-size: clamp(14px, 1.6vw, 18px);
+    line-height: 1.5;
+    word-wrap: break-word;
+    width: 100%;
+  }
+
+  #status {
+    font-size: clamp(18px, 2vw, 24px);
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    margin: 0.5vh 0 2vh 0;
+  }
+
+  .after-text {
+    color: #fff;
+    display: block;
+    margin-top: 1vh;
+    font-size: clamp(16px, 1.8vw, 20px);
+    text-align: center;
+  }
 
   form {
     width: 90vw;
     max-width: 800px;
-    background: var(--gradient-dark1);
+    background: #111;
     padding: 1.5vh 2vw;
-    border-radius: var(--border-radius);
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 1vh;
-    position: relative;
-    overflow: hidden;
   }
 
-  form::before {
-    content: "";
-    position: absolute;
-    top: -2px; left: -2px; right: -2px; bottom: -2px;
-    border-radius: 14px;
-    padding: 2px;
-    background: conic-gradient(red, orange, yellow, green, blue, indigo, violet, red);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-            mask-composite: exclude;
-    animation: rotate 3s linear infinite;
-    z-index: -1;
+  form h2 {
+    text-align: center;
+    color: #fff;
+    font-size: clamp(20px, 3vw, 28px);
+    margin-bottom: 1.5vh;
   }
 
-  @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  label {
+    font-size: clamp(14px, 1.8vw, 16px);
+    color: #ccc;
+    margin: 0.5vh 0;
+  }
 
-  form h2 { text-align: center; color: var(--primary-color); font-size: clamp(20px, 3vw, 28px); margin-bottom: 1.5vh; }
-  label { font-size: var(--font-small); color: var(--secondary-color); margin: 0.5vh 0; }
   input, textarea {
     width: 100%;
     padding: 0.8vh 1vw;
     margin-bottom: 1vh;
     border-radius: 10px;
     border: 1px solid #555;
-    font-size: var(--font-small);
+    font-size: clamp(14px, 1.8vw, 16px);
     background: #000;
     color: #fff;
     resize: none;
   }
 
-  input::placeholder, textarea::placeholder { color: #888; }
-  input:focus, textarea:focus { border-color: var(--primary-color); outline: none; }
-
   button {
     padding: 1vh 1vw;
-    font-size: var(--font-small);
+    font-size: clamp(14px, 1.8vw, 16px);
     font-weight: bold;
-    background: var(--primary-color);
+    background: #fff;
     color: #000;
     border: none;
     border-radius: 8px;
@@ -123,12 +147,20 @@
     margin-top: 1vh;
   }
 
-  button:hover { background: #ccc; }
+  button:hover {
+    background: #ccc;
+  }
 
   @media (max-width: 480px) {
-    h1 { font-size: 12vw; } #to { font-size: 4vw; } #countdownText { font-size: 3.5vw; }
-    #message { font-size: 3vw; } #status { font-size: 4vw; } .after-text { font-size: 4vw; margin-top: 1vw; }
-    form h2 { font-size: 4vw; } input, textarea { font-size: 3vw; } button { font-size: 3.5vw; }
+    h1 { font-size: 12vw; }
+    #to { font-size: 4vw; }
+    #countdownText { font-size: 3.5vw; }
+    #message { font-size: 3vw; }
+    #status { font-size: 4vw; }
+    .after-text { font-size: 4vw; margin-top: 1vw; }
+    form h2 { font-size: 4vw; }
+    input, textarea { font-size: 3vw; }
+    button { font-size: 3.5vw; }
   }
 </style>
 </head>
@@ -149,21 +181,26 @@
 
 <form action="https://formspree.io/f/xpwjkayd" method="POST">
   <h2>Send a message</h2>
+
   <label for="name">Your Name (optional):</label>
   <input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
+
   <label for="profile">Your FB/IG/Link (optional):</label>
   <input type="url" id="profile" name="profile" placeholder="https://facebook.com/...">
+
   <label for="recipient">Link of the person you want me to send:</label>
   <input type="url" id="recipient" name="recipient" placeholder="https://...">
+
   <label for="messageInput">Your Message:</label>
   <textarea id="messageInput" name="message" rows="5" required placeholder="Type your message here..."></textarea>
+
   <button type="submit">Send</button>
 </form>
 
 <script>
-  const DURATION_SECONDS = 5;
+  const DURATION_SECONDS = 25;
   const TO_TEXT = "Sam Yvanne";
-  const SECRET_MESSAGE = "hshs";
+  const SECRET_MESSAGE = "gfffvvccxvvvcx";
   const SELF_DESTRUCT_TEXT = "Message destroyed!";
   const AFTER_TEXT = "— Louís Ryc";
 
@@ -189,7 +226,7 @@
 
   function showDestroyed() {
     messageEl.textContent = "";
-    countdownTextEl.textContent = "";
+    countdownTextEl.innerHTML = "";
     statusEl.textContent = SELF_DESTRUCT_TEXT;
     const afterEl = document.createElement('span');
     afterEl.className = 'after-text';
@@ -203,6 +240,7 @@
     messageEl.textContent = SECRET_MESSAGE;
     let remaining = DURATION_SECONDS;
     countdownEl.textContent = remaining;
+
     const timer = setInterval(() => {
       remaining--;
       countdownEl.textContent = remaining;
