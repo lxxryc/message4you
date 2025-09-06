@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Message4you</title>
   <style>
-    /* Reset */
     * { box-sizing: border-box; margin:0; padding:0; }
 
     html, body {
       height: 100%;
       width: 100%;
-      overflow: hidden; /* prevent scrolling */
+      overflow: hidden;
       font-family: Tahoma, sans-serif;
       background: rgb(38,35,35);
       color: #222;
@@ -21,13 +20,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      padding: 1vh 2vw;
+      justify-content: space-around;
+      padding: 1.5vh 2vw;
     }
 
     /* Title */
     h1 {
-      font-size: clamp(32px, 6vw, 70px);
+      font-size: clamp(32px, 5vw, 60px);
       color: pink;
       text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
       text-align: center;
@@ -35,18 +34,18 @@
 
     /* Countdown */
     #countdownText {
-      font-size: clamp(16px, 2.5vw, 22px);
+      font-size: clamp(14px, 2vw, 18px);
       font-weight: bold;
       color: red;
       text-align: center;
-      margin: 1vh 0;
+      margin: 0.5vh 0;
     }
 
     /* Message Box */
     #messageBox {
       width: 90vw;
       max-width: 800px;
-      height: 30vh;
+      height: 28vh;
       background: pink;
       border-radius: 12px;
       box-shadow: 0 8px 18px rgba(0,0,0,0.6);
@@ -54,22 +53,22 @@
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
-      overflow-y: auto; /* scroll if message too long */
+      overflow-y: auto;
     }
 
     #message {
-      font-size: clamp(14px, 1.8vw, 20px);
+      font-size: clamp(14px, 1.6vw, 18px);
       line-height: 1.4;
       width: 100%;
       word-wrap: break-word;
     }
 
     #status {
-      font-size: clamp(16px, 2vw, 22px);
+      font-size: clamp(16px, 1.8vw, 20px);
       color: red;
       font-weight: bold;
       text-align: center;
-      margin-top: 1vh;
+      margin: 2vh 0; /* more space above and below */
     }
 
     .after-text { color: pink; }
@@ -79,7 +78,7 @@
       width: 90vw;
       max-width: 800px;
       background: pink;
-      padding: 2vh 2vw;
+      padding: 1.5vh 1.5vw;
       border-radius: 12px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.4);
       display: flex;
@@ -91,11 +90,11 @@
       text-align: center;
       color: white;
       margin-bottom: 1vh;
-      font-size: clamp(18px, 3vw, 28px);
+      font-size: clamp(16px, 2.5vw, 24px);
     }
 
     label {
-      font-size: clamp(14px, 2vw, 18px);
+      font-size: clamp(13px, 1.8vw, 16px);
       color: black;
       margin: 0.5vh 0 0.5vh 0;
     }
@@ -106,13 +105,13 @@
       margin-bottom: 1vh;
       border-radius: 10px;
       border: 1px solid black;
-      font-size: clamp(14px, 2vw, 18px);
+      font-size: clamp(14px, 1.8vw, 16px);
       resize: none;
     }
 
     button {
       padding: 1vh 1vw;
-      font-size: clamp(16px, 2vw, 20px);
+      font-size: clamp(14px, 1.8vw, 16px);
       font-weight: bold;
       background: white;
       border: none;
@@ -124,14 +123,13 @@
 
     button:hover { background: #ff9eb5; }
 
-    /* Perfect visual balance for all screens */
     @media (max-width: 480px) {
       h1 { font-size: 10vw; }
-      #countdownText { font-size: 4vw; }
-      #message { font-size: 3.5vw; }
-      form h2 { font-size: 4vw; }
+      #countdownText { font-size: 3.5vw; }
+      #message { font-size: 3vw; }
+      form h2 { font-size: 3.5vw; }
       input, textarea { font-size: 3vw; }
-      button { font-size: 4vw; }
+      button { font-size: 3.5vw; }
     }
   </style>
 </head>
@@ -165,7 +163,7 @@
 
   <script>
     const DURATION_SECONDS = 10;
-    const SECRET_MESSAGE = "if you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata haif you're reading this, you know how to read man to, kata kata ha";
+    const SECRET_MESSAGE = "This is a sample secret message. It will self-destruct once the timer reaches zero.";
     const SELF_DESTRUCT_TEXT = "⚠️ Message destroyed!";
     const AFTER_TEXT = "— Anonymous";
 
