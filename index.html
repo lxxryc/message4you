@@ -188,6 +188,8 @@
     border-radius: 12px;
     color: #fff;
     animation: fadeIn 0.3s ease;
+    max-height: 80vh;
+    overflow-y: auto;
   }
   @keyframes fadeIn {
     from {opacity:0;}
@@ -260,10 +262,26 @@
   <div class="modal-content">
     <span class="close" data-close="faqModal">&times;</span>
     <h2>FAQ</h2>
-    <p><strong>Q:</strong> How does Message4you work?</p>
-    <p><strong>A:</strong> Type your message, the recipient will see it, and it will self-destruct.</p>
-    <p><strong>Q:</strong> Can I send anonymously?</p>
-    <p><strong>A:</strong> Yes, name is optional.</p>
+    <p><strong>Q:</strong> Am I truly anonymous when sending a message?</p>
+    <p><strong>A:</strong> Yes, your identity is fully protected.</p>
+
+    <p><strong>Q:</strong> Can anyone see the message I send?</p>
+    <p><strong>A:</strong> No, it’s completely private.</p>
+
+    <p><strong>Q:</strong> How do I send a message?</p>
+    <p><strong>A:</strong> Your message will be placed in a self-destructing box. The countdown depends on the message length.</p>
+
+    <p><strong>Q:</strong> Can the recipient identify me?</p>
+    <p><strong>A:</strong> No, but you can leave a clue if you want.</p>
+
+    <p><strong>Q:</strong> Can the recipient reply?</p>
+    <p><strong>A:</strong> Yes, but only through the developer. You will receive their reply via the self-destructing system.</p>
+
+    <p><strong>Q:</strong> Is the message permanently deleted?</p>
+    <p><strong>A:</strong> Yes, after it’s opened on each device. We are working to make it 100% privacy-proof.</p>
+
+    <p><strong>Q:</strong> How long does it take to deliver?</p>
+    <p><strong>A:</strong> Usually 1 minute to process and about 30 seconds to send.</p>
   </div>
 </div>
 
@@ -271,7 +289,7 @@
   <div class="modal-content">
     <span class="close" data-close="aboutModal">&times;</span>
     <h2>About</h2>
-    <p>Message4you is a web app for sending secret messages that self-destruct after being read.</p>
+    <p>Message4you is a work-in-progress web app that allows you to send messages anonymously. Its main purpose is to let you communicate with someone without revealing your identity.</p>
   </div>
 </div>
 
@@ -279,7 +297,10 @@
   <div class="modal-content">
     <span class="close" data-close="contactModal">&times;</span>
     <h2>Contact</h2>
-    <p>If you have questions or need support, contact us at: <a href="mailto:support@message4you.com" style="color:#ff0;">support@message4you.com</a></p>
+    <p>You can reach me here:</p>
+    <p>Email: <a href="mailto:lxx.ryc@gmail.com" style="color:#ff0;">lxx.ryc@gmail.com</a></p>
+    <p>Facebook: <a href="https://facebook.com" style="color:#ff0;">facebook.com</a></p>
+    <p>Instagram: <a href="https://instagram.com" style="color:#ff0;">instagram.com</a></p>
   </div>
 </div>
 
