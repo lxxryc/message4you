@@ -1,4 +1,4 @@
-i<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,8 +11,8 @@ i<!DOCTYPE html>
     height: 100%;
     width: 100%;
     font-family: Tahoma, sans-serif;
-    background: rgb(38,35,35);
-    color: #222;
+    background: #111;
+    color: #eee;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -21,77 +21,78 @@ i<!DOCTYPE html>
     padding: 2vh 2vw;
   }
 
- 
+  /* Title */
   h1 {
     font-size: clamp(40px, 6vw, 80px);
-    color: pink;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
+    color: #fff;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
     margin-bottom: 1vh;
     text-align: center;
   }
 
-  
+  /* TO text */
   #to {
     font-size: clamp(18px, 2.5vw, 28px);
-    color: pink;
+    color: #ccc;
     text-align: center;
     margin-bottom: 1vh;
   }
 
-  
+  /* Countdown */
   #countdownText {
-    font-size: clamp(12px, 1.8vw, 16px); /* smaller font */
-    color: red;
+    font-size: clamp(12px, 1.8vw, 16px);
+    color: #aaa;
     font-weight: bold;
     text-align: center;
-    margin: 1vh 0 2vh 0; /* moved slightly down */
+    margin: 1vh 0 2vh 0;
   }
 
-  
+  /* Message Box */
   #messageBox {
     width: 90vw;
     max-width: 800px;
     height: 25vh;
-    background: pink;
+    background: #222;
     border-radius: 12px;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.8);
     padding: 1.5vh 1vw;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     overflow-y: auto;
-    margin-bottom: 1vh; 
+    margin-bottom: 1vh;
   }
 
   #message {
     font-size: clamp(14px, 1.6vw, 18px);
     line-height: 1.5;
     word-wrap: break-word;
+    color: #fff;
   }
 
   #status {
     font-size: clamp(18px, 2vw, 24px);
-    color: red;
+    color: #fff;
     font-weight: bold;
     text-align: center;
-    margin: 0.5vh 0 2vh 0; 
+    margin: 0.5vh 0 2vh 0;
   }
 
   .after-text {
-    color: pink;
+    color: #ccc;
     display: block;
-    margin-top: 1vh; 
+    margin-top: 1vh;
     font-size: clamp(16px, 1.8vw, 20px);
   }
 
-  
+  /* Form */
   form {
     width: 90vw;
     max-width: 800px;
-    background: pink;
+    background: #222;
     padding: 1.5vh 2vw;
     border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.7);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -100,14 +101,14 @@ i<!DOCTYPE html>
 
   form h2 {
     text-align: center;
-    color: white;
+    color: #fff;
     font-size: clamp(20px, 3vw, 28px);
     margin-bottom: 1.5vh;
   }
 
   label {
     font-size: clamp(14px, 1.8vw, 16px);
-    color: black;
+    color: #ccc;
     margin: 0.5vh 0;
   }
 
@@ -116,8 +117,10 @@ i<!DOCTYPE html>
     padding: 0.8vh 1vw;
     margin-bottom: 1vh;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid #555;
     font-size: clamp(14px, 1.8vw, 16px);
+    background: #111;
+    color: #eee;
     resize: none;
   }
 
@@ -125,7 +128,8 @@ i<!DOCTYPE html>
     padding: 1vh 1vw;
     font-size: clamp(14px, 1.8vw, 16px);
     font-weight: bold;
-    background: white;
+    background: #fff;
+    color: #111;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -134,7 +138,7 @@ i<!DOCTYPE html>
   }
 
   button:hover {
-    background: #ff9eb5;
+    background: #ccc;
   }
 
   @media (max-width: 480px) {
