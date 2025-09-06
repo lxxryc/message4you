@@ -42,14 +42,13 @@
       align-items: flex-start;
       justify-content: flex-start;
       overflow-y: auto;
-
       width: 80%;
-      min-height: 400px;
-      max-height: 600px;
+      min-height: 200px;
+      max-height: 400px;
     }
 
     #message {
-      font-size: 30px;
+      font-size: 28px;
       text-align: left;
       margin: 0;
       word-wrap: break-word;
@@ -58,13 +57,57 @@
 
     #status {
       margin-top: 15px;
-      font-size: 33px;
+      font-size: 30px;
       font-weight: bold;
       color: red;
     }
 
     .after-text {
       color: pink;
+    }
+
+   
+    form {
+      margin-top: 40px;
+      background: pink;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: black;
+    }
+
+    input, textarea {
+      width: 98%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid black;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background: white;
+      color: #222;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #ff9eb5;
     }
   </style>
 </head>
@@ -82,11 +125,29 @@
 
   <p id="status"></p>
 
+  
+  <form action="https://formspree.io/f/xpwjkayd" method="POST">
+    <h2 style="text-align:center; color:white;">Send me a message</h2>
+    <label for="name">Your Name (optional):</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
+
+    <label for="profile">Your FB/IG/Link (optional):</label>
+    <input type="url" id="profile" name="profile" placeholder="https://facebook.com/...">
+
+    <label for="recipient">Link of the person you want me to send (optional):</label>
+    <input type="url" id="recipient" name="recipient" placeholder="https://...">
+
+    <label for="messageInput">Your Message:</label>
+    <textarea id="messageInput" name="message" rows="5" required placeholder="Type your message here..."></textarea>
+
+    <button type="submit">Send</button>
+  </form>
+
   <script>
-    const DURATION_SECONDS = 5;
+    const DURATION_SECONDS = 20;
     const TO_TEXT = "";
-    const SECRET_MESSAGE = "Kapoya na ani uyy";
-    const SELF_DESTRUCT_TEXT = "Message destroyed!";
+    const SECRET_MESSAGE = "Try send ug message";
+    const SELF_DESTRUCT_TEXT = "Message destroyed!☹️";
     const AFTER_TEXT = "— Anonymous";
 
     function hashString(str) {
@@ -135,6 +196,3 @@
   </script>
 </body>
 </html>
-
-
-
