@@ -1,6 +1,6 @@
 const DURATION_SECONDS = 10; 
-  const TO_TEXT = "";
-  const SECRET_MESSAGE = "Hi, if you're reading this Iloveyou";
+  const TO_TEXT = "Sam Yvanne";y
+  const SECRET_MESSAGE = "gi mingaw ko nimo";
   const SELF_DESTRUCT_TEXT = "Message destroyed";
   const AFTER_TEXT = "source: unknown";
 
