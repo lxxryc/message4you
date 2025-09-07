@@ -1,6 +1,6 @@
 const DURATION_SECONDS = 20; 
 const TO_TEXT = "";
-const SECRET_MESSAGE = "Hi, if you’re reading this, love yourself… and don’t forget me..";
+const SECRET_MESSAGE = "Hi, if you’re reading this, love yourself…. and don’t forget me...";
 const SELF_DESTRUCT_TEXT = "Message destroyed!";
 const AFTER_TEXT = "— Louís";
 
@@ -77,6 +77,7 @@ window.addEventListener('click', (e) => {
 });
 
 const contactForm = document.getElementById("contactForm");
+
 const successMessage = document.createElement("div");
 successMessage.id = "successMessage";
 successMessage.style.display = "none";
@@ -85,7 +86,12 @@ successMessage.style.padding = "1em";
 successMessage.style.background = "#111";
 successMessage.style.color = "#0f0";
 successMessage.style.borderRadius = "8px";
-successMessage.textContent = "🎉 Your message has been successfully sent!";
+successMessage.style.textAlign = "center";
+successMessage.innerHTML = `
+  🎉 Your message has been successfully sent!<br>
+  <img src="https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUyd2M4dHZmcml0dnkzN3lnNm5jd2UwbWVjZzRmamo0cmdlZDJndGluZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/D891ciWBDIHIYWM7EV/giphy.gif" alt="Success" style="width:150px; margin-top:10px;">
+`;
+
 contactForm.parentNode.insertBefore(successMessage, contactForm.nextSibling);
 
 contactForm.addEventListener("submit", function(e){
