@@ -1,6 +1,6 @@
-const DURATION_SECONDS = 5; 
+const DURATION_SECONDS = 15; 
   const TO_TEXT = "";
-  const SECRET_MESSAGE = "test1l";
+  const SECRET_MESSAGE = "test2";
   const SELF_DESTRUCT_TEXT = "Message destroyed!";
   const AFTER_TEXT = "Source: unknown";
 
@@ -77,3 +77,4 @@ const DURATION_SECONDS = 5;
     }
 
   });
+
