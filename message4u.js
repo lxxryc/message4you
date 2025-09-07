@@ -1,8 +1,8 @@
-const DURATION_SECONDS = 10; 
-  const TO_TEXT = "Sam Yvanne";
-  const SECRET_MESSAGE = "gi mingaw ko nimo";
-  const SELF_DESTRUCT_TEXT = "Message destroyed";
-  const AFTER_TEXT = "source: unknown";
+const DURATION_SECONDS = 20; 
+  const TO_TEXT = "";
+  const SECRET_MESSAGE = "So unsa man, sugod natas chapter one or diretso natas happy ending??";
+  const SELF_DESTRUCT_TEXT = "Message destroyed!";
+  const AFTER_TEXT = "— DEVELOPER";
 
   const toEl = document.getElementById("to");
   const countdownEl = document.getElementById("countdown");
@@ -75,6 +75,4 @@ const DURATION_SECONDS = 10;
     if(e.target.classList.contains('modal')) {
       e.target.style.display = 'none';
     }
-
   });
-
