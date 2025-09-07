@@ -1,8 +1,8 @@
 const DURATION_SECONDS = 15; 
   const TO_TEXT = "";
-  const SECRET_MESSAGE = "test2";
-  const SELF_DESTRUCT_TEXT = "Message destroyed!";
-  const AFTER_TEXT = "Source: unknown";
+  const SECRET_MESSAGE = "Ni overthink ko, mao siguro ni left di melo kay gusto nya ka call kay naa syang problema, kay namugos to ganiha sa akoa eh pag mga laki dili baya na mo ingana sa iban laki, basig namugos kay gusto sya mag open up, kaso sigeg mo katawa";
+  const SELF_DESTRUCT_TEXT = "Sana all overthink";
+  const AFTER_TEXT = "— Josh";
 
   const toEl = document.getElementById("to");
   const countdownEl = document.getElementById("countdown");
