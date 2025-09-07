@@ -1,8 +1,8 @@
-const DURATION_SECONDS = 15; 
+const DURATION_SECONDS = 10; 
   const TO_TEXT = "";
-  const SECRET_MESSAGE = "hi";
+  const SECRET_MESSAGE = "Hi, if you're reading this Iloveyou";
   const SELF_DESTRUCT_TEXT = "Message destroyed";
-  const AFTER_TEXT = "— Josh";
+  const AFTER_TEXT = "source: unknown";
 
   const toEl = document.getElementById("to");
   const countdownEl = document.getElementById("countdown");
