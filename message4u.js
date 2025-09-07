@@ -1,8 +1,8 @@
-const DURATION_SECONDS = 20; 
+const DURATION_SECONDS =  10; 
   const TO_TEXT = "";
-  const SECRET_MESSAGE = "So unsa man, sugod natas chapter one or diretso natas happy ending??";
+  const SECRET_MESSAGE = "Hi, if you’re reading this, love yourself… and don’t forget me.";
   const SELF_DESTRUCT_TEXT = "Message destroyed!";
-  const AFTER_TEXT = "— DEVELOPER";
+  const AFTER_TEXT = "— Louís";
 
   const toEl = document.getElementById("to");
   const countdownEl = document.getElementById("countdown");
