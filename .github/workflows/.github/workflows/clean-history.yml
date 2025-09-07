@@ -1,0 +1,22 @@
+name: Clean Commit History
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  clean_history:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Reset history to latest commit
+        run: |
+          git checkout main
+          git reset --soft $(git rev-parse HEAD)
+          git commit --amend -m "Latest commit only"
+          git push origin main --force
