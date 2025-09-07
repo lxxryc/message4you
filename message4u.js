@@ -1,6 +1,6 @@
 const DURATION_SECONDS = 5; 
 const TO_TEXT = "";
-const SECRET_MESSAGE = "Hi, if you're reading this, good luck sa klase💋.";
+const SECRET_MESSAGE = "Hi, if you're reading this, good luck sa klase mwah💋.";
 const SELF_DESTRUCT_TEXT = "message destroyed!";
 const AFTER_TEXT = "Louís Ryc";
 
@@ -76,8 +76,8 @@ window.addEventListener('click', (e) => {
   }
 });
 
-const contactForm = document.getElementById("contactForm");
 
+const contactForm = document.getElementById("contactForm");
 const successMessage = document.createElement("div");
 successMessage.id = "successMessage";
 successMessage.style.display = "none";
@@ -91,7 +91,6 @@ successMessage.innerHTML = `
   🎉 Your message has been successfully sent!<br>
   <img src="https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUyd2M4dHZmcml0dnkzN3lnNm5jd2UwbWVjZzRmamo0cmdlZDJndGluZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/D891ciWBDIHIYWM7EV/giphy.gif" alt="Success" style="width:150px; margin-top:10px;">
 `;
-
 contactForm.parentNode.insertBefore(successMessage, contactForm.nextSibling);
 
 contactForm.addEventListener("submit", function(e){
@@ -110,5 +109,17 @@ contactForm.addEventListener("submit", function(e){
     }
   }).catch(error => {
     alert("Oops! There was a problem sending your message.");
+  });
+});
+
+// FAQ animation
+document.querySelectorAll('details').forEach(detail => {
+  const content = detail.querySelector('.details-content');
+  detail.addEventListener('toggle', () => {
+    if (detail.open) {
+      content.style.maxHeight = content.scrollHeight + 'px';
+    } else {
+      content.style.maxHeight = '0';
+    }
   });
 });
