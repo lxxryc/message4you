@@ -1,7 +1,7 @@
 const DURATION_SECONDS = 15; 
   const TO_TEXT = "";
-  const SECRET_MESSAGE = "Ni overthink ko, mao siguro ni left di melo kay gusto nya ka call kay naa syang problema, kay namugos to ganiha sa akoa eh pag mga laki dili baya na mo ingana sa iban laki, basig namugos kay gusto sya mag open up, kaso sigeg mo katawa";
-  const SELF_DESTRUCT_TEXT = "Sana all overthink";
+  const SECRET_MESSAGE = "hi";
+  const SELF_DESTRUCT_TEXT = "Message destroyed";
   const AFTER_TEXT = "— Josh";
 
   const toEl = document.getElementById("to");
