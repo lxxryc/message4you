@@ -1,6 +1,6 @@
 const DURATION_SECONDS = 5; 
   const TO_TEXT = "";
-  const SECRET_MESSAGE = "If you're reading this, you are beautiful";
+  const SECRET_MESSAGE = "test1l";
   const SELF_DESTRUCT_TEXT = "Message destroyed!";
   const AFTER_TEXT = "Source: unknown";
 
@@ -75,4 +75,5 @@ const DURATION_SECONDS = 5;
     if(e.target.classList.contains('modal')) {
       e.target.style.display = 'none';
     }
+
   });
