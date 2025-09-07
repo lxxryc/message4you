@@ -1,6 +1,6 @@
 const DURATION_SECONDS = 20; 
 const TO_TEXT = "";
-const SECRET_MESSAGE = "Hi, if you’re reading this, love yourself…. and don’t forget me...";
+const SECRET_MESSAGE = "Sleeping.";
 const SELF_DESTRUCT_TEXT = "Message destroyed!";
 const AFTER_TEXT = "— Louís";
 
