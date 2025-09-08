@@ -24,13 +24,12 @@
 
   <div id="messageBox">
     <p id="message"></p>
-     <img src=""
-       style="max-width:200px; margin-top:10px; border-radius:12px;">
+    <img src="" 
+         style="max-width:200px; margin-top:10px; border-radius:12px;">
   </div>
 
   <p id="status"></p>
 
-  <!-- FORM -->
   <form action="https://formspree.io/f/xpwjkayd" method="POST">
     <h2>Send a message</h2>
 
@@ -48,65 +47,50 @@
 
     <button type="submit">Send</button>
   </form>
-  <!-- Success message will be injected here by JS -->
 
   <!-- FAQ Modal -->
   <div id="faqModal" class="modal">
     <div class="modal-content">
       <span class="close" data-close="faqModal">&times;</span>
       <h2>FAQ</h2>
-      <ul style="list-style:none; padding:0; margin:0;">
+      <div class="faq-list">
 
-        <li style="margin-bottom:1vh;">
-          <details>
-            <summary>Am I truly anonymous when sending a message?</summary>
-            <p>Technically yes. But also depends on your goal.</p>
-          </details>
-        </li>
+        <div class="faq-item">
+          <div class="faq-question">Am I truly anonymous when sending a message?</div>
+          <div class="faq-answer">Technically yes. But also depends on your goal.</div>
+        </div>
 
-        <li style="margin-bottom:1vh;">
-          <details>
-            <summary>Can anyone see the message I send?</summary>
-            <p>The developer can read your message.</p>
-          </details>
-        </li>
+        <div class="faq-item">
+          <div class="faq-question">Can anyone see the message I send?</div>
+          <div class="faq-answer">The developer can read your message.</div>
+        </div>
 
-        <li style="margin-bottom:1vh;">
-          <details>
-            <summary>How does my message work?</summary>
-            <p>Your message will be placed manually in a self-destructing box. The countdown depends on the message length.</p>
-          </details>
-        </li>
+        <div class="faq-item">
+          <div class="faq-question">How does my message work?</div>
+          <div class="faq-answer">Your message will be placed manually in a self-destructing box. The countdown depends on the message length.</div>
+        </div>
 
-        <li style="margin-bottom:1vh;">
-          <details>
-            <summary>Can the recipient identify me?</summary>
-            <p>It depends on your goal, but you can leave a clue if you want.</p>
-          </details>
-        </li>
+        <div class="faq-item">
+          <div class="faq-question">Can the recipient identify me?</div>
+          <div class="faq-answer">It depends on your goal, but you can leave a clue if you want.</div>
+        </div>
 
-        <li style="margin-bottom:1vh;">
-          <details>
-            <summary>Can the recipient reply?</summary>
-            <p>Yes, but their reply usually goes through the developer first. You will receive their reply via the self-destructing system. But only if you provide your account link.</p>
-          </details>
-        </li>
+        <div class="faq-item">
+          <div class="faq-question">Can the recipient reply?</div>
+          <div class="faq-answer">Yes, but their reply usually goes through the developer first. You will receive their reply via the self-destructing system. But only if you provide your account link.</div>
+        </div>
 
-        <li style="margin-bottom:1vh;">
-          <details>
-            <summary>Is the message permanently deleted?</summary>
-            <p>Not 100%, but after it’s opened on each device it's gone. The developer is still working to make it fully privacy-proof.</p>
-          </details>
-        </li>
+        <div class="faq-item">
+          <div class="faq-question">Is the message permanently deleted?</div>
+          <div class="faq-answer">Not 100%, but after it’s opened on each device it's gone. The developer is still working to make it fully privacy-proof.</div>
+        </div>
 
-        <li style="margin-bottom:1vh;">
-          <details>
-            <summary>How long does it take to deliver?</summary>
-            <p>Usually 1 minute to process and about 30 seconds to send.</p>
-          </details>
-        </li>
-<p style="text-align: center;">UPDATING</p>
-      </ul>
+        <div class="faq-item">
+          <div class="faq-question">How long does it take to deliver?</div>
+          <div class="faq-answer">Usually 1 minute to process and about 30 seconds to send.</div>
+        </div>
+
+      </div>
     </div>
   </div>
 
@@ -130,6 +114,17 @@
       <p>Instagram: <a href="https://www.instagram.com/lxxryc?igsh=MWhlaWZvMWhnNnlqZQ==" style="color:#ff0;">instagram.com</a></p>
     </div>
   </div>
+<!--
+<footer>
+  <p>© 2025 Louís Ryc. All rights reserved.</p>
+</footer>
+-->
+<footer>
+  <div class="footer-profile">
+  <!--<img src="https://scontent.fceb6-3.fna.fbcdn.net/v/t39.30808-6/543593204_122138568980877366_8951151228226273663_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGBxyfuf5vFJ7w7FMBMSMDGwHrYtGUFc87Aeti0ZQVzzoLojeuXNInIB6XDfbTRwQh4UXCsWO_G23kyt7fIiqGX&_nc_ohc=_YanCj9F5dIQ7kNvwGVoGp5&_nc_oc=Adko9K3f0UPU2Dc5QHycqOIVK9JDJjLyT8TgvPWa9aQggPjBAhUoenGKxekmAHxKb68&_nc_zt=23&_nc_ht=scontent.fceb6-3.fna&_nc_gid=5d7j_QA8foby1vpvJnmd1A&oh=00_AfaL-R0ZNAj2UVoT5el00aYhL74LRt20xaGnP2FX9U8z7g&oe=68C45C0C"/>-->  
+    <p>© 2025 Message4you<br>Created by <strong>Louís Ryc</strong></p>
+  </div>
+</footer>
 
   <script src="message4u.js"></script>
 </body>
