@@ -1,121 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Message4you</title>
-<link rel="stylesheet" href="message4u.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message4you</title>
+  <link rel="stylesheet" href="message4u.css">
 </head>
 
 <body>
 
-<nav>
-  <a id="faqBtn" href="#">FAQ</a>
-  <a id="aboutBtn" href="#">About</a>
-  <a id="contactBtn" href="#">Contact</a>
-</nav>
+  <nav>
+    <a id="faqBtn">FAQ</a>
+    <a id="aboutBtn">About</a>
+    <a id="contactBtn">Contact</a>
+  </nav>
 
-<h1>Message4you</h1>
-<h2 id="to"></h2>
+  <h1>Message4you</h1>
+  <h2 id="to"></h2>
 
-<p id="countdownText">
-  FIX IN PROGRESS <span id="countdown"></span> 
-</p>
+  <p id="countdownText">
+    This message will self-destruct in <span id="countdown"></span> seconds…
+  </p>
 
-<div id="messageBox">
-  <p id="message"></p>
-</div>
-
-<p id="status"></p>
-
-<form id="contactForm">  
-  <h2>Send a message</h2>  <label for="name">Your Name (optional):</label>
-<input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
-
-<label for="profile">Your FB/IG/Link (optional):</label>
-<input type="url" id="profile" name="profile" placeholder="https://facebook.com/...">
-
-<label for="recipient">Link of the person you want me to send:</label>
-<input type="url" id="recipient" name="recipient" placeholder="https://...">
-
-<label for="messageInput">Your Message:</label>
-
-  <textarea id="messageInput" name="message" rows="5" required placeholder="Type your message here..."></textarea>  <button type="submit">Send</button>
-
-</form>  
-
-<div id="faqModal" class="modal">
-  <div class="modal-content">
-    <span class="close" data-close="faqModal">&times;</span>
-    <h2>FAQ</h2>
-    <ul style="list-style:none; padding:0; margin:0;">
-      <li style="margin-bottom:1vh;">
-        <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary>Am I truly anonymous when sending a message?</summary>
-          <p style="margin-top:0.5vh; color:#ccc;">Technically yes. But it also depends on your goal.</p>
-        </details>
-      </li>
-      <li style="margin-bottom:1vh;">
-        <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary>Can anyone see the message I send?</summary>
-          <p style="margin-top:0.5vh; color:#ccc;">The developer can read your message.</p>
-        </details>
-      </li>
-      <li style="margin-bottom:1vh;">
-        <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary>How does my message work?</summary>
-          <p style="margin-top:0.5vh; color:#ccc;">Your message will be placed manually in a self-destructing box. The countdown depends on the message length.</p>
-        </details>
-      </li>
-      <li style="margin-bottom:1vh;">
-        <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary>Can the recipient identify me?</summary>
-          <p style="margin-top:0.5vh; color:#ccc;">It depends on your goal, but you can leave a clue if you want.</p>
-        </details>
-      </li>
-      <li style="margin-bottom:1vh;">
-        <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary>Can the recipient reply?</summary>
-          <p style="margin-top:0.5vh; color:#ccc;">Yes, but their reply usually goes through the developer first. You will receive it via the self-destructing system if you provide your account link.</p>
-        </details>
-      </li>
-      <li style="margin-bottom:1vh;">
-        <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary>Is the message permanently deleted?</summary>
-          <p style="margin-top:0.5vh; color:#ccc;">Not 100%, but after it’s opened on each device, it's gone. The developer is working to make it fully privacy-proof.</p>
-        </details>
-      </li>
-      <li style="margin-bottom:1vh;">
-        <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary>How long does it take to deliver?</summary>
-          <p style="margin-top:0.5vh; color:#ccc;">Usually 1 minute to process and about 30 seconds to send.</p>
-        </details>
-      </li>
-    </ul>
+  <div id="messageBox">
+    <p id="message"></p>
+     <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGVubmRnaHJlaW5wZTYwMWlxdGtxcDU0eDRrZmRyYXNuNGk2MDEzeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UwkrJKRKJkFb2/giphy.gif" 
+             
+             style="max-width:200px; margin-top:10px; border-radius:12px;">
   </div>
-</div>
 
+  <p id="status"></p>
 
-<div id="aboutModal" class="modal">
-  <div class="modal-content">
-    <span class="close" data-close="aboutModal">&times;</span>
-    <h2>About</h2>
-    <p>Message4you is a work-in-progress web app that allows you to send messages anonymously. Its main purpose is to let you send messages to someone without revealing your identity.</p>
+  <!-- FORM -->
+  <form action="https://formspree.io/f/xpwjkayd" method="POST">
+    <h2>Send a message</h2>
+
+    <label for="name">Your Name (optional):</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
+
+    <label for="profile">Your FB/IG/Link (optional):</label>
+    <input type="url" id="profile" name="profile" placeholder="https://facebook.com/...">
+
+    <label for="recipient">Link of the person you want me to send:</label>
+    <input type="url" id="recipient" name="recipient" placeholder="https://...">
+
+    <label for="messageInput">Your Message:</label>
+    <textarea id="messageInput" name="message" rows="5" required placeholder="Type your message here..."></textarea>
+
+    <button type="submit">Send</button>
+  </form>
+  <!-- Success message will be injected here by JS -->
+
+  <!-- FAQ Modal -->
+  <div id="faqModal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-close="faqModal">&times;</span>
+      <h2>FAQ</h2>
+      <ul style="list-style:none; padding:0; margin:0;">
+
+        <li style="margin-bottom:1vh;">
+          <details>
+            <summary>Am I truly anonymous when sending a message?</summary>
+            <p>Technically yes. But also depends on your goal.</p>
+          </details>
+        </li>
+
+        <li style="margin-bottom:1vh;">
+          <details>
+            <summary>Can anyone see the message I send?</summary>
+            <p>The developer can read your message.</p>
+          </details>
+        </li>
+
+        <li style="margin-bottom:1vh;">
+          <details>
+            <summary>How does my message work?</summary>
+            <p>Your message will be placed manually in a self-destructing box. The countdown depends on the message length.</p>
+          </details>
+        </li>
+
+        <li style="margin-bottom:1vh;">
+          <details>
+            <summary>Can the recipient identify me?</summary>
+            <p>It depends on your goal, but you can leave a clue if you want.</p>
+          </details>
+        </li>
+
+        <li style="margin-bottom:1vh;">
+          <details>
+            <summary>Can the recipient reply?</summary>
+            <p>Yes, but their reply usually goes through the developer first. You will receive their reply via the self-destructing system. But only if you provide your account link.</p>
+          </details>
+        </li>
+
+        <li style="margin-bottom:1vh;">
+          <details>
+            <summary>Is the message permanently deleted?</summary>
+            <p>Not 100%, but after it’s opened on each device it's gone. The developer is still working to make it fully privacy-proof.</p>
+          </details>
+        </li>
+
+        <li style="margin-bottom:1vh;">
+          <details>
+            <summary>How long does it take to deliver?</summary>
+            <p>Usually 1 minute to process and about 30 seconds to send.</p>
+          </details>
+        </li>
+
+      </ul>
+    </div>
   </div>
-</div>
 
-
-<div id="contactModal" class="modal">
-  <div class="modal-content">
-    <span class="close" data-close="contactModal">&times;</span>
-    <h2>Contact</h2>
-    <p>You can reach me here:</p>
-    <p>Email: <a href="mailto:lxx.ryc@gmail.com" style="color:#ff0;">lxx.ryc@gmail.com</a></p>
-    <p>Facebook: <a href="https://www.facebook.com/share/17KsNyhQ4s/" style="color:#ff0;">facebook.com</a></p>
-    <p>Instagram: <a href="https://www.instagram.com/lxxryc?igsh=MWhlaWZvMWhnNnlqZQ==" style="color:#ff0;">instagram.com</a></p>
+  <!-- About Modal -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-close="aboutModal">&times;</span>
+      <h2>About</h2>
+      <p>Message4you is a work-in-progress web that allows you to send messages anonymously. Its main purpose is to let you send a message to someone without revealing your identity.</p>
+    </div>
   </div>
-</div>
 
-<script src="message4u.js"></script>
+  <!-- Contact Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-close="contactModal">&times;</span>
+      <h2>Contact</h2>
+      <p>You can reach me here:</p>
+      <p>Email: <a href="mailto:lxx.ryc@gmail.com" style="color:#ff0;">lxx.ryc@gmail.com</a></p>
+      <p>Facebook: <a href="https://www.facebook.com/share/17KsNyhQ4s/" style="color:#ff0;">facebook.com</a></p>
+      <p>Instagram: <a href="https://www.instagram.com/lxxryc?igsh=MWhlaWZvMWhnNnlqZQ==" style="color:#ff0;">instagram.com</a></p>
+    </div>
+  </div>
+
+  <script src="message4u.js"></script>
 </body>
 </html>
