@@ -195,25 +195,38 @@ button:hover { background: #ccc; }
   cursor: pointer;
 }
 
-/* Smooth FAQ Styling for <details> */
-#faqModal details summary {
+/* FAQ Styling */
+.faq-list {
+  margin-top: 1vh;
+}
+.faq-item {
+  border-bottom: 1px solid #333;
+  padding: 1vh 0;
+}
+.faq-question {
   cursor: pointer;
   font-weight: bold;
   font-size: 1.1em;
-  list-style: none;
-  padding: 8px 0;
+  padding: 0.5vh 0;
+  transition: color 0.3s;
 }
-#faqModal details p {
-  margin: 0;
-  padding: 0;
-  color: #ccc;
-  overflow: hidden;
+.faq-question:hover {
+  color: #ff0;
+  padding: 8px;
+  
+}
+.faq-answer {
   max-height: 0;
-  transition: max-height 0.4s ease, padding 0.4s ease;
+  overflow: hidden;
+  color: #ccc;
+  font-size: 0.95em;
+  line-height: 1.4;
+  transition: max-height 0.35s ease-in-out, padding 0.35s ease-in-out;
+  padding: 0 0;
 }
-#faqModal details.open p {
-  padding-top: 8px;
-  max-height: 500px; /* enough space for expansion */
+.faq-item.active .faq-answer {
+  padding: 0.10vh 0;
+  max-height: 1000px; /* large enough to handle long text */
 }
 
 @media (max-width: 480px) {
@@ -228,4 +241,39 @@ button:hover { background: #ccc; }
   input, textarea { font-size: 3vw; }
   button { font-size: 3.5vw; }
 }
+/*
+footer {
+  margin-top: auto;
+  padding: 1vh 0;
+  text-align: center;
+  font-size: 0.9em;
+  color: #888;
+}
+footer p {
+  margin: 0;
+}
 
+*/
+
+footer {
+  margin-top: auto;
+  padding: 1vh 0;
+  text-align: center;
+  font-size: 0.9em;
+  color: #888;
+}
+
+.footer-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.footer-profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #555;
+  object-fit: cover;
+}
