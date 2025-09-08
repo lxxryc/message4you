@@ -1,8 +1,8 @@
-const DURATION_SECONDS = 120; 
-const TO_TEXT = "";
-const SECRET_MESSAGE = "";
+const DURATION_SECONDS = 10; 
+const TO_TEXT = "Sam Yvanne";
+const SECRET_MESSAGE = "Imissyou ";
 const SELF_DESTRUCT_TEXT = "Message destroyed";
-const AFTER_TEXT = "Source: unknown";
+const AFTER_TEXT = "from your baby";
 
 const toEl = document.getElementById("to");
 const countdownEl = document.getElementById("countdown");
