@@ -99,7 +99,7 @@ form.addEventListener("submit", async function(e) {
       successDiv.style.textAlign = "center";
       successDiv.innerHTML = `
         <h2 style="color:red;">Can't Receive Message Until 09/10/25. Developer Is Still Working</h2>
-        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHg0dnBmODZrNmE0aHJxeG9oa2N2a2RuZXpuNjZlNmFybHJybTh1dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/McO9I90Llu3BrCy5wb/giphy.gif" 
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmNnODhiYzNvZzlpdGNuMW9reWYwZWhlYzQxaGVvNTl2c3R1bG5sciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wpoLqr5FT1sY0/giphy.gif" 
              alt="success" 
              style="max-width:200px; margin-top:10px; border-radius:12px;">
       `;
