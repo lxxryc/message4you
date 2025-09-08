@@ -1,7 +1,7 @@
-const DURATION_SECONDS = 60; 
+const DURATION_SECONDS = 120; 
 const TO_TEXT = "";
-const SECRET_MESSAGE = "HI BABY";
-const SELF_DESTRUCT_TEXT = "Message destroyed!";
+const SECRET_MESSAGE = "";
+const SELF_DESTRUCT_TEXT = "Message destroyed";
 const AFTER_TEXT = "Source: unknown";
 
 const toEl = document.getElementById("to");
@@ -112,27 +112,31 @@ form.addEventListener("submit", async function(e) {
   }
 });
 
-// ----- Smooth FAQ Animation -----
-document.querySelectorAll("#faqModal details").forEach(detail => {
-  const summary = detail.querySelector("summary");
-  const content = detail.querySelector("p");
+// ----- FAQ Expand/Collapse (Smooth, Clean) -----
+document.querySelectorAll(".faq-question").forEach(question => {
+  question.addEventListener("click", () => {
+    const item = question.parentElement;
+    const answer = item.querySelector(".faq-answer");
 
-  summary.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    if (detail.classList.contains("open")) {
+    if (item.classList.contains("active")) {
       // Collapse
-      content.style.maxHeight = "0px";
-      content.style.paddingTop = "0";
-      detail.classList.remove("open");
+      answer.style.maxHeight = answer.scrollHeight + "px"; // lock height
+      requestAnimationFrame(() => {
+        answer.style.maxHeight = "0px";
+      });
+      item.classList.remove("active");
     } else {
       // Expand
-      content.style.maxHeight = content.scrollHeight + "px";
-      content.style.paddingTop = "8px";
-      detail.classList.add("open");
+      answer.style.maxHeight = answer.scrollHeight + "px";
+      item.classList.add("active");
+
+      // After animation, allow auto height for dynamic content
+      answer.addEventListener("transitionend", function handler() {
+        if (item.classList.contains("active")) {
+          answer.style.maxHeight = "none";
+        }
+        answer.removeEventListener("transitionend", handler);
+      });
     }
   });
 });
-
-
-
