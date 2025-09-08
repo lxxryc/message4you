@@ -1,4 +1,4 @@
-const DURATION_SECONDS = 99999; 
+const DURATION_SECONDS = ; 
 const TO_TEXT = "";
 const SECRET_MESSAGE = "";
 const SELF_DESTRUCT_TEXT = "";
