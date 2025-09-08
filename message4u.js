@@ -1,8 +1,8 @@
-const DURATION_SECONDS = 10; 
-const TO_TEXT = "Sam Yvanne";
-const SECRET_MESSAGE = "Imissyou ";
+const DURATION_SECONDS = 30; 
+const TO_TEXT = "";
+const SECRET_MESSAGE = "BUGOA KAYA ";
 const SELF_DESTRUCT_TEXT = "Message destroyed";
-const AFTER_TEXT = "from your baby";
+const AFTER_TEXT = "— Louís Ryc";
 
 const toEl = document.getElementById("to");
 const countdownEl = document.getElementById("countdown");
