@@ -33,23 +33,21 @@
 <p id="status"></p>
 
 
-<form id="contactForm">
-  <h2>Send a message</h2>
+<form id="contactForm">  
+  <h2>Send a message</h2>  <label for="name">Your Name (optional):</label>
+<input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
 
-  <label for="name">Your Name (optional):</label>
-  <input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
+<label for="profile">Your FB/IG/Link (optional):</label>
+<input type="url" id="profile" name="profile" placeholder="https://facebook.com/...">
 
-  <label for="profile">Your FB/IG/Link (optional):</label>
-  <input type="url" id="profile" name="profile" placeholder="https://facebook.com/...">
+<label for="recipient">Link of the person you want me to send:</label>
+<input type="url" id="recipient" name="recipient" placeholder="https://...">
 
-  <label for="recipient">Link of the person you want me to send:</label>
-  <input type="url" id="recipient" name="recipient" placeholder="https://...">
+<label for="messageInput">Your Message:</label>
 
-  <label for="messageInput">Your Message:</label>
-  <textarea id="messageInput" name="message" rows="5" required placeholder="Type your message here..."></textarea>
+  <textarea id="messageInput" name="message" rows="5" required placeholder="Type your message here..."></textarea>  <button type="submit">Send</button>
 
-  <button type="submit">Send</button>
-</form>
+</form> 
 
 
 <div id="faqModal" class="modal">
