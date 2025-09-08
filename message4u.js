@@ -1,7 +1,7 @@
-const DURATION_SECONDS = 30; 
+const DURATION_SECONDS = UPDATING...; 
 const TO_TEXT = "";
-const SECRET_MESSAGE = "BUGOA KAYA ";
-const SELF_DESTRUCT_TEXT = "Message destroyed";
+const SECRET_MESSAGE = "";
+const SELF_DESTRUCT_TEXT = "";
 const AFTER_TEXT = "— Louís Ryc";
 
 const toEl = document.getElementById("to");
