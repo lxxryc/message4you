@@ -9,15 +9,11 @@
 
 <body>
 
-
 <nav>
-  <a id="faqBtn">FAQ</a>
-  <a id="aboutBtn">About</a>
-  <a id="contactBtn">Contact</a>
+  <a id="faqBtn" href="#">FAQ</a>
+  <a id="aboutBtn" href="#">About</a>
+  <a id="contactBtn" href="#">Contact</a>
 </nav>
-
-
-
 
 <h1>Message4you</h1>
 <h2 id="to"></h2>
@@ -32,92 +28,85 @@
 
 <p id="status"></p>
 
-
 <form id="contactForm">  
-  <h2>Send a message</h2>  <label for="name">Your Name (optional):</label>
-<input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
+  <h2>Send a message</h2>  
+  <label for="name">Your Name (optional):</label>
+  <input type="text" id="name" name="name" placeholder="Enter your name or leave blank">
 
-<label for="profile">Your FB/IG/Link (optional):</label>
-<input type="url" id="profile" name="profile" placeholder="https://facebook.com/...">
+  <label for="profile">Your FB/IG/Link (optional):</label>
+  <input type="url" id="profile" name="profile" placeholder="https://facebook.com/...">
 
-<label for="recipient">Link of the person you want me to send:</label>
-<input type="url" id="recipient" name="recipient" placeholder="https://...">
+  <label for="recipient">Recipient’s Link:</label>
+  <input type="url" id="recipient" name="recipient" placeholder="https://...">
 
-<label for="messageInput">Your Message:</label>
+  <label for="messageInput">Your Message:</label>
+  <textarea id="messageInput" name="message" rows="5" required placeholder="Type your message here..."></textarea>  
 
-  <textarea id="messageInput" name="message" rows="5" required placeholder="Type your message here..."></textarea>  <button type="submit">Send</button>
-
+  <button type="submit">Send</button>
 </form> 
 
-
+<!-- FAQ Modal -->
 <div id="faqModal" class="modal">
   <div class="modal-content">
     <span class="close" data-close="faqModal">&times;</span>
     <h2>FAQ</h2>
     <ul style="list-style:none; padding:0; margin:0;">
-
       <li style="margin-bottom:1vh;">
         <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary style="cursor:pointer; font-weight:bold; font-size:1.1em;">Am I truly anonymous when sending a message?</summary>
-          <p style="margin-top:0.5vh; color:#ccc;">Technically yes. But also dpends on your goal.</p>
+          <summary>Am I truly anonymous when sending a message?</summary>
+          <p style="margin-top:0.5vh; color:#ccc;">Technically yes. But it also depends on your goal.</p>
         </details>
       </li>
-
       <li style="margin-bottom:1vh;">
         <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary style="cursor:pointer; font-weight:bold; font-size:1.1em;">Can anyone see the message I send?</summary>
+          <summary>Can anyone see the message I send?</summary>
           <p style="margin-top:0.5vh; color:#ccc;">The developer can read your message.</p>
         </details>
       </li>
-
       <li style="margin-bottom:1vh;">
         <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary style="cursor:pointer; font-weight:bold; font-size:1.1em;">How does my message work?</summary>
+          <summary>How does my message work?</summary>
           <p style="margin-top:0.5vh; color:#ccc;">Your message will be placed manually in a self-destructing box. The countdown depends on the message length.</p>
         </details>
       </li>
-
       <li style="margin-bottom:1vh;">
         <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary style="cursor:pointer; font-weight:bold; font-size:1.1em;">Can the recipient identify me?</summary>
+          <summary>Can the recipient identify me?</summary>
           <p style="margin-top:0.5vh; color:#ccc;">It depends on your goal, but you can leave a clue if you want.</p>
         </details>
       </li>
-
       <li style="margin-bottom:1vh;">
         <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary style="cursor:pointer; font-weight:bold; font-size:1.1em;">Can the recipient reply?</summary>
-          <p style="margin-top:0.5vh; color:#ccc;">Yes, but their reply usually go through the developer first. You will receive their reply via the self-destructing system. But only if you provide your account link.</p>
+          <summary>Can the recipient reply?</summary>
+          <p style="margin-top:0.5vh; color:#ccc;">Yes, but their reply usually goes through the developer first. You will receive it via the self-destructing system if you provide your account link.</p>
         </details>
       </li>
-
       <li style="margin-bottom:1vh;">
         <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary style="cursor:pointer; font-weight:bold; font-size:1.1em;">Is the message permanently deleted?</summary>
-          <p style="margin-top:0.5vh; color:#ccc;">Not 100%, but after it’s opened on each device it's gone. The developer is still working to make it fully privacy-proof.</p>
+          <summary>Is the message permanently deleted?</summary>
+          <p style="margin-top:0.5vh; color:#ccc;">Not 100%, but after it’s opened on each device, it's gone. The developer is working to make it fully privacy-proof.</p>
         </details>
       </li>
-
       <li style="margin-bottom:1vh;">
         <details style="background:#111; padding:1vh 1vw; border-radius:8px;">
-          <summary style="cursor:pointer; font-weight:bold; font-size:1.1em;">How long does it take to deliver?</summary>
+          <summary>How long does it take to deliver?</summary>
           <p style="margin-top:0.5vh; color:#ccc;">Usually 1 minute to process and about 30 seconds to send.</p>
         </details>
       </li>
-
     </ul>
   </div>
 </div>
 
-
+<!-- About Modal -->
 <div id="aboutModal" class="modal">
   <div class="modal-content">
     <span class="close" data-close="aboutModal">&times;</span>
     <h2>About</h2>
-    <p>Message4you is a work-in-progress web that allows you to send messages anonymously. Its main purpose is to let you send message to someone without revealing your identity.</p>
+    <p>Message4you is a work-in-progress web app that allows you to send messages anonymously. Its main purpose is to let you send messages to someone without revealing your identity.</p>
   </div>
 </div>
 
+<!-- Contact Modal -->
 <div id="contactModal" class="modal">
   <div class="modal-content">
     <span class="close" data-close="contactModal">&times;</span>
@@ -128,6 +117,7 @@
     <p>Instagram: <a href="https://www.instagram.com/lxxryc?igsh=MWhlaWZvMWhnNnlqZQ==" style="color:#ff0;">instagram.com</a></p>
   </div>
 </div>
+
 <script src="message4u.js"></script>
 </body>
 </html>
